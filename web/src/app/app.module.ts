@@ -1,38 +1,54 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { RouterModule, Routes } from "@angular/router";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
-import 'hammerjs';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateModule } from '@ngx-translate/core';
-import { ToastrModule } from 'ngx-toastr'; // For auth after login toast
+import "hammerjs";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { TranslateModule } from "@ngx-translate/core";
+import { ToastrModule } from "ngx-toastr"; // For auth after login toast
 
-import { CoreModule } from '@core/core.module';
-import { CoreCommonModule } from '@core/common.module';
-import { CoreSidebarModule, CoreThemeCustomizerModule } from '@core/components';
+import { CoreModule } from "@core/core.module";
+import { CoreCommonModule } from "@core/common.module";
+import { CoreSidebarModule, CoreThemeCustomizerModule } from "@core/components";
 
-import { coreConfig } from 'app/app-config';
+import { coreConfig } from "app/app-config";
 
-import { AppComponent } from 'app/app.component';
-import { LayoutModule } from 'app/layout/layout.module';
-import { SampleModule } from 'app/main/sample/sample.module';
+import { AppComponent } from "app/app.component";
+import { LayoutModule } from "app/layout/layout.module";
+import { SampleModule } from "app/main/sample/sample.module";
+import { AuthenticationModule } from "./main/pages/authentication/authentication.module";
+import { AuthGuard } from "./auth/helpers/auth.guards";
+import { JwtInterceptor } from "./auth/helpers/jwt.interceptor";
+import { ErrorInterceptor } from "./auth/helpers/error.interceptor";
+import { AlreadyAuthGuard } from "./@core/security/already-auth.guard";
 
 const appRoutes: Routes = [
   {
-    path: 'pages',
-    loadChildren: () => import('./main/pages/pages.module').then(m => m.PagesModule)
+    path: "",
+    redirectTo: "/admin",
+    pathMatch: "full",
   },
   {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
+    path: "admin",
+    loadChildren: () =>
+      import("./main/pages/pages.module").then((m) => m.PagesModule),
+      canActivate: [AuthGuard],
   },
+  
   {
-    path: '**',
-    redirectTo: '/pages/miscellaneous/error' //Error 404 - Page not found
-  }
+    path: "auth",
+    loadChildren: () =>
+      import("./main/pages/authentication/authentication.module").then(
+        (m) => m.AuthenticationModule
+      ),
+  },
+  
+  {
+    path: "**",
+    redirectTo: "/pages/miscellaneous/error", //Error 404 - Page not found
+  },
 ];
 
 @NgModule({
@@ -42,8 +58,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes, {
-      scrollPositionRestoration: 'enabled', // Add options right here
-      relativeLinkResolution: 'legacy'
+      scrollPositionRestoration: "enabled", // Add options right here
+      relativeLinkResolution: "legacy",
     }),
     TranslateModule.forRoot(),
 
@@ -56,12 +72,20 @@ const appRoutes: Routes = [
     CoreCommonModule,
     CoreSidebarModule,
     CoreThemeCustomizerModule,
+    TranslateModule,
 
     // App modules
     LayoutModule,
-    SampleModule
-  ],
+    SampleModule,
+    AuthenticationModule,
 
-  bootstrap: [AppComponent]
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    // ! IMPORTANT: Provider used to create fake backend, comment while using real API
+    // fakeBackendProvider,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

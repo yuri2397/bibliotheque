@@ -22,6 +22,8 @@ class UserController extends Controller
                 ->where('name', 'like', "%{$request->q}%")
                 ->orWhere('username', 'like', "%{$request->q}%")
                 ->orWhere('email', 'like', "%{$request->q}%")
+                ->orWhere('address', 'like', "%{$request->q}%")
+                ->orWhere('city', 'like', "%{$request->q}%")
                 ->orWhere('phone', 'like', "%{$request->q}%");
         }
 
@@ -70,7 +72,7 @@ class UserController extends Controller
      */
     public function show(Request $request, User $user)
     {
-        return $user->refresh()->with($request->with ?? []);
+        return User::with($request->with ?? [])->find($user->id);
     }
 
     /**
@@ -84,11 +86,11 @@ class UserController extends Controller
     {
         // validation
         $request->validate([
-            'name' => ['required', 'string'],
-            'username' => ['required', 'string', 'unique:users,username,'],
-            'email' => ['string', 'email', 'unique:users,email,'],
+            'name' => ['string'],
+            'username' => ['string', 'unique:users,username,'],
+            'email' => ['email', 'unique:users,email,'],
             'password' => ['min:5'],
-            'phone' => ['required', 'string', 'unique:users,phone,'],
+            'phone' => ['string', 'unique:users,phone,'],
         ]);
 
         // update user with pass if exist in the request

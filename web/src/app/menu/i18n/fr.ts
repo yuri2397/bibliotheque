@@ -3,7 +3,10 @@ export const locale = {
   data: {
     MENU: {
       HOME: 'Maison',
-      SAMPLE: 'Échantillon'
+      ORDER: 'Comandes',
+      DOCUMENT: 'Document',
+      AREA: 'Rayon',
+      USER: 'Utilisateur',
     }
   }
 }

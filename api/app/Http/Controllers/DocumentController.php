@@ -22,9 +22,9 @@ class DocumentController extends Controller
                 $q->where('name', 'like', '%' . $request->q . '%');
             });
 
-            $query->orWhereHas('slug', function ($q) use ($request) {
-                $q->where('slug', 'like', '%' . $request->q . '%');
-            });
+            // $query->orWhereHas('slugs', function ($q) use ($request) {
+            //     $q->where('slug', 'like', '%' . $request->q . '%');
+            // });
         }
 
         return $query->paginate(

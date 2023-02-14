@@ -1,12 +1,4 @@
-﻿import { Role } from './role';
+﻿import { User as U } from 'app/@core/models/user.model';
+import { Role } from './role';
 
-export class User {
-  id: number;
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  avatar: string;
-  role: Role;
-  token?: string;
-}
+export class User  extends U{}

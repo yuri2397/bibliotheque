@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Shared\UUID;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,7 +16,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable implements HasMedia
 {
     use InteractsWithMedia;
-    use HasApiTokens, HasFactory, Notifiable, UUID;
+    use HasApiTokens, HasFactory, Notifiable, UUID, HasRoles;
+
+    protected $guard_name = 'api';
+
 
     /**
      * The attributes that are mass assignable.
@@ -39,4 +43,6 @@ class User extends Authenticatable implements HasMedia
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
 }

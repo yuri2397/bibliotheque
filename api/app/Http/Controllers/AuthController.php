@@ -13,18 +13,19 @@ class AuthController extends Controller
         // validation
         $request->validate([
             'username' => ['required', 'string'],
-            'password' => ['required', 'min:5'],
+            'password' => ['required'],
         ]);
 
         // authenticate the users is username and password was correct and create the token
 
-        $user = User::whereUsername($request->username)->first();
+        $user = User::with(['permissions'])->whereUsername($request->username)->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
             $token = $user->createToken('auth_token')->plainTextToken;
             return response()->json([
                 'access_token' => $token,
                 'token_type' => 'Bearer',
+                'permissions' => $user->permissions
             ]);
         }
 
@@ -77,5 +78,10 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Logged out',
         ]);
+    }
+
+    public function currentUser(Request $request)
+    {
+        return User::with($request->with ?? [])->find(auth()->id());
     }
 }

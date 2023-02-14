@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 use App\Shared\UUID;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;

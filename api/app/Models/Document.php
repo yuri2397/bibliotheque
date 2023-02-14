@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 use App\Shared\UUID;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
@@ -39,9 +40,9 @@ class Document extends Model implements HasMedia
     }
 
     // get the authors of the document
-    public function authors()
+    public function author()
     {
-        return $this->belongsToMany(Author::class, 'document_has_authors');
+        return $this->belongsTo(Author::class);
     }
 
     // get the slugs of the document

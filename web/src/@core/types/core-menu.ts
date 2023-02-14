@@ -1,3 +1,5 @@
+import { Param } from "app/@core/models/base.model";
+
 // prettier-ignore
 export interface CoreMenuItem {
     id           : string;
@@ -13,6 +15,7 @@ export interface CoreMenuItem {
     exactMatch?  : boolean;
     externalUrl? : boolean;
     openInNewTab?: boolean;
+    params?: Param;
     badge?       : {
         title?    : string;
         translate?: string;

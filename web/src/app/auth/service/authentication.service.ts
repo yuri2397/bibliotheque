@@ -1,14 +1,19 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Token } from "../../@core/models/token.model";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { BehaviorSubject, Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
-import { environment } from 'environments/environment';
-import { User, Role } from 'app/auth/models';
-import { ToastrService } from 'ngx-toastr';
+import { environment as env } from "environments/environment";
+import { User, Role } from "app/auth/models";
+import { ToastrService } from "ngx-toastr";
+import { Param, Permission } from "app/@core/models/base.model";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class AuthenticationService {
+  private _baseUrl!: string;
+  private _token_key = "_enkot_ye";
+  private _current_user_key = "currentUser";
   //public
   public currentUser: Observable<User>;
 
@@ -20,8 +25,11 @@ export class AuthenticationService {
    * @param {HttpClient} _http
    * @param {ToastrService} _toastrService
    */
-  constructor(private _http: HttpClient, private _toastrService: ToastrService) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+  constructor(private _http: HttpClient) {
+    this._baseUrl = `${env.apiUrl}/auth`;
+    this.currentUserSubject = new BehaviorSubject<User>(
+      JSON.parse(localStorage.getItem("currentUser"))
+    );
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -30,18 +38,42 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
+  public get isAuth() {
+    return JSON.parse(localStorage.getItem(this._token_key)) && true;
+  }
+
+  public get token(): Token {
+    return JSON.parse(localStorage.getItem(this._token_key)) as Token;
+  }
+
+  public set token(token: Token) {
+    localStorage.setItem(this._token_key, JSON.stringify(token));
+  }
+
   /**
    *  Confirms if user is admin
    */
   get isAdmin() {
-    return this.currentUser && this.currentUserSubject.value.role === Role.Admin;
+    return true;
   }
 
   /**
    *  Confirms if user is client
    */
   get isClient() {
-    return this.currentUser && this.currentUserSubject.value.role === Role.Client;
+    return true;
+  }
+
+  get permissions(): Permission[] {
+    return JSON.parse(localStorage.getItem("permissions")) as Permission[];
+  }
+
+  set permissions(permissions: Permission[]) {
+    localStorage.setItem("permissions", JSON.stringify(permissions));
+  }
+
+  get roles() {
+    return (JSON.parse(this._current_user_key)?.roles as Permission[]) ?? [];
   }
 
   /**
@@ -51,31 +83,38 @@ export class AuthenticationService {
    * @param password
    * @returns user
    */
-  login(email: string, password: string) {
+  login(username: string, password: string) {
     return this._http
-      .post<any>(`${environment.apiUrl}/users/authenticate`, { email, password })
+      .post<any>(`${this._baseUrl}/login`, {
+        username: username,
+        password: password,
+      })
       .pipe(
-        map(user => {
-          // login successful if there's a jwt token in the response
-          if (user && user.token) {
+        map((response) => {
+          console.log(response);
+          if (response) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
-
-            // Display welcome toast!
-            setTimeout(() => {
-              this._toastrService.success(
-                'You have successfully logged in as an ' +
-                  user.role +
-                  ' user to Vuexy. Now you can start to explore. Enjoy! 🎉',
-                '👋 Welcome, ' + user.firstName + '!',
-                { toastClass: 'toast ngx-toastr', closeButton: true }
-              );
-            }, 2500);
-
-            // notify
-            this.currentUserSubject.next(user);
+            this.token = {
+              token_type: response.token_type,
+              access_token: response.access_token,
+            };
+            this.permissions = response.permissions;
           }
 
+          return response;
+        })
+      );
+  }
+
+  getCurrentUser(params?: Param) {
+    return this._http
+      .get(`${this._baseUrl}/current-user`, { params: params })
+      .pipe(
+        map((user: User) => {
+          if (user) {
+            localStorage.setItem(this._current_user_key, JSON.stringify(user));
+            this.currentUserSubject.next(user);
+          }
           return user;
         })
       );
@@ -87,7 +126,8 @@ export class AuthenticationService {
    */
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem(this._token_key);
     // notify
     this.currentUserSubject.next(null);
   }
