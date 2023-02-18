@@ -19,9 +19,7 @@ export class JwtInterceptor implements HttpInterceptor {
    * @param next
    */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    console.log(this._authenticationService.isAuth)
-    console.log(this._authenticationService.token.access_token)
+    
     if (this._authenticationService.isAuth ) {
       request = request.clone({
         setHeaders: {

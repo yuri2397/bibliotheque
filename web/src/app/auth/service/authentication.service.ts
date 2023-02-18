@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
-import { environment as env } from "environments/environment";
+import { environment as env, environment } from "environments/environment";
 import { User, Role } from "app/auth/models";
 import { ToastrService } from "ngx-toastr";
 import { Param, Permission } from "app/@core/models/base.model";
@@ -84,6 +84,8 @@ export class AuthenticationService {
    * @returns user
    */
   login(username: string, password: string) {
+    
+    console.log(`${this._baseUrl}/login`)
     return this._http
       .post<any>(`${this._baseUrl}/login`, {
         username: username,
