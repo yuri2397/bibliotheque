@@ -22,6 +22,7 @@ import { NgSelectModule } from '@ng-select/ng-select'
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CoreTouchspinModule } from '@core/components/core-touchspin/core-touchspin.module'
+import { ComponentsModule } from '../components/components.module'
 // AoT requires an exported function for factories
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
@@ -46,6 +47,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     CoreSidebarModule,
     NgSelectModule,
     SweetAlert2Module,
+    ComponentsModule
   ],
   imports: [
     CommonModule,
@@ -69,6 +71,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     CoreCommonModule,
     NgbModule,
     NouisliderModule,
+    ComponentsModule,
     CoreSidebarModule,
     NgSelectModule,
     SweetAlert2Module.forRoot(),

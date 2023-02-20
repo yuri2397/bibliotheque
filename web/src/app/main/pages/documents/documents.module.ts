@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { DocumentResolver } from './../../../@core/resolver/document.resolver';
 import { DocumentsComponent } from "./documents.component";
 import { NgModule } from "@angular/core";
@@ -10,6 +11,8 @@ import { CreateDocumentComponent } from "./create-document/create-document.compo
 import { UpdateDocumentComponent } from "./update-document/update-document.component";
 import { DetailsDocumentComponent } from "./details-document/details-document.component";
 import { ListDocumentComponent } from './list-document/list-document.component';
+import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 // routing
 const routes: Routes = [
@@ -52,6 +55,9 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     CoreCommonModule,
+    ContentHeaderModule,
+    NgxDatatableModule,
+    TranslateModule
   ],
 })
 export class DocumentsModule {}

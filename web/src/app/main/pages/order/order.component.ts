@@ -6,10 +6,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
+  public contentHeader: object
 
   constructor() { }
 
   ngOnInit(): void {
+    this.contentHeader = {
+      headerTitle: 'Home',
+      actionButton: true,
+      breadcrumb: {
+        type: '',
+        links: [
+          {
+            name: 'Home',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Sample',
+            isLink: false
+          }
+        ]
+      }
+    }
   }
 
 }

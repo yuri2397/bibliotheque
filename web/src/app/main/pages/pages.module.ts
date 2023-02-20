@@ -17,6 +17,11 @@ import { ContentHeaderModule } from "app/layout/components/content-header/conten
 import { AuthenticationModule } from "./authentication/authentication.module";
 import { MiscellaneousModule } from "./miscellaneous/miscellaneous.module";
 import { RouterModule, Routes } from "@angular/router";
+import { TranslateModule } from "@ngx-translate/core";
+import { OrderModule } from "./order/order.module";
+import { UsersModule } from "./users/users.module";
+import { ComponentsModule } from "../components/components.module";
+import { SharedModule } from "../shared/shared.module";
 
 const appRoutes: Routes = [
   {
@@ -59,12 +64,12 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forChild(appRoutes),
     CommonModule,
-    CoreCommonModule,
-    ContentHeaderModule,
     NgbModule,
     NgSelectModule,
     FormsModule,
     MiscellaneousModule,
+    TranslateModule,
+    SharedModule
   ],
 
   providers: [],
