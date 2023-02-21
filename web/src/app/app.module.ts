@@ -24,6 +24,7 @@ import { JwtInterceptor } from "./auth/helpers/jwt.interceptor";
 import { ErrorInterceptor } from "./auth/helpers/error.interceptor";
 import { AlreadyAuthGuard } from "./@core/security/already-auth.guard";
 
+
 const appRoutes: Routes = [
   {
     path: "",
