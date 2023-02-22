@@ -22,7 +22,7 @@ export class DocumentResolver implements Resolve<Paginate<Document>> {
     let params = route.queryParams;
     console.log("PARAMS", params)
 
-    return this._documentService.index<Document>({
+    return this._documentService.index({
       'with[]': ["author"],
       'per_page': 10,
       'page': 1

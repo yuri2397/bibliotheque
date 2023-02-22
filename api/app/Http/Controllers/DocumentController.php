@@ -62,9 +62,9 @@ class DocumentController extends Controller
      * @param  \App\Models\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function show(Document $document)
-    {
-        return $document->load('document_copies');
+    public function show(Request $request, $id)
+    {   
+        return Document::with($request->with ?? [])->find($id);
     }
 
     /**

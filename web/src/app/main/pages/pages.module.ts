@@ -22,11 +22,12 @@ import { OrderModule } from "./order/order.module";
 import { UsersModule } from "./users/users.module";
 import { ComponentsModule } from "../components/components.module";
 import { SharedModule } from "../shared/shared.module";
+import { AreasResolver } from "app/@core/resolver/areas.resolver";
 
 const appRoutes: Routes = [
   {
     path: "admin",
-    redirectTo: "/documents",
+    redirectTo: "/areas",
     pathMatch: "full",
   },
   {
@@ -42,6 +43,9 @@ const appRoutes: Routes = [
     path: "areas",
     component: AreaComponent,
     loadChildren: () => import("./area/area.module").then((m) => m.AreaModule),
+    resolve: {
+      areas: AreasResolver,
+    },
   },
 
   {

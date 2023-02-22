@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AreaController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -9,6 +10,7 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DocumentCopyController;
+use App\Models\Area;
 
 // AuthController
 
@@ -78,14 +80,27 @@ Route::prefix('authors')
         Route::delete('/{id}', [AuthorController::class, 'destroy']);
     });
 
+Route::prefix('areas')
+    ->middleware('auth:sanctum')
+    ->group(function () {
+        Route::get('/', [AreaController::class, 'index']);
+        Route::get('/{id}', [AreaController::class, 'show']);
+        Route::post('/', [AreaController::class, 'store']);
+        Route::put('/{id}', [AreaController::class, 'update']);
+        Route::delete('/{id}', [AreaController::class, 'destroy']);
+    });
+
 
 
 Route::any('/test', function (Request $request) {
-    $user = User::whereUsername('mor.diaw')->first();
+    $rest = [];
+   foreach ($request->data as $value) {
+        $a = new Area();
+        $a->name = $value['name'];
+        $a->slug = $value['slug'];
+        $a->save();
+        $rest[] = $a;
+   }
 
-    if($user){
-        $user->givePermissionTo(Permission::all());
-
-        return $user;
-    }
+   return $rest;
 });

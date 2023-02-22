@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { TranslateService } from "@ngx-translate/core";
@@ -10,6 +10,7 @@ import { Paginate } from "app/@core/models/paginate.model";
   selector: "app-list-document",
   templateUrl: "./list-document.component.html",
   styleUrls: ["./list-document.component.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ListDocumentComponent implements OnInit {
   public contentHeader: object;
@@ -29,7 +30,7 @@ export class ListDocumentComponent implements OnInit {
   ngOnInit(): void {
     this._route.data.subscribe((data) => {
       this.documents = data.documents;
-      console.log(data);
+      console.log(data.documents.data[0]);
     });
 
     this._route.queryParams.subscribe((data) => {
@@ -78,5 +79,20 @@ export class ListDocumentComponent implements OnInit {
     });
   }
 
-  openCreateModal(modal: any) {}
+  openCreateModal(modal: any) {
+    this._modalService
+      .open(modal, {
+        centered: true,
+      })
+      .result.then((result) => {
+        if (result) {
+          const index = this.documents.data.findIndex(
+            (item) => item.id === result.id
+          );
+          this.documents.data[index] = result;
+          this.documents.data = [...this.documents.data];
+        }
+      })
+      .catch((_) => {});
+  }
 }

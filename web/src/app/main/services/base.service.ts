@@ -4,7 +4,7 @@ import { first } from 'rxjs/operators';
 import { Param } from '../../@core/models/base.model';
 import { Paginate } from '../../@core/models/paginate.model';
 
-export class AbstractService {
+export class AbstractService<T> {
     private _enpoint!: string
     private _http!: HttpClient
   
@@ -37,31 +37,31 @@ export class AbstractService {
      * CRUD FUNCTION
      */
   
-    public index<T>(params?: Param) {
+    public index(params?: Param) {
       return this.http
         .get<Paginate<T>>(this.enpoint, { params: params })
         .pipe(first())
     }
   
-    public create<T>(data: T) {
+    public create(data: T) {
       return this.http.post<T>(this.enpoint, data).pipe(
         first()
       )
     }
   
-    public show<T>(uuid: string, params?: Param) {
+    public show(uuid: string, params?: Param) {
       return this.http
         .get<T>(`${this.enpoint}/${uuid}`, { params: params })
         .pipe(first())
     }
   
-    public update<T>(uuid: string, data: T) {
+    public update(uuid: string, data: T) {
       return this.http.put<T>(`${this.enpoint}/${uuid}`, data).pipe(
         first()
       )
     }
   
-    public delete<T>(uuid: string) {
+    public delete(uuid: string) {
       return this.http.delete<T>(`${this.enpoint}/${uuid}`).pipe(
         first()
       )

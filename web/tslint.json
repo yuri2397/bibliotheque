@@ -7,7 +7,7 @@
     "comment-format": [true, "check-space"],
     "curly": true,
     "deprecation": {
-      "severity": "warn"
+      "severity": "warshorthandn"
     },
     "eofline": true,
     "forin": true,
