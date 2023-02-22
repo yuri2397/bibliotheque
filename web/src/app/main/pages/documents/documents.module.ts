@@ -32,12 +32,12 @@ const routes: Routes = [
   {
     path: "create",
     component: CreateDocumentComponent,
-    data: { animation: "detail" },
+    data: { animation: "create" },
   },
   {
     path: ":uui/update",
     component: UpdateDocumentComponent,
-    data: { animation: "detail" },
+    data: { animation: "update" },
   },
 ];
 
