@@ -1,16 +1,20 @@
-<div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
-    <div *ngFor="let item of areas" class="col pointer grow" (click)="show(item)">
-      <div class="card border-0 text-white">
-        <img
-          src="assets/images/area.jpg"
-          alt="Card image"
-          class="card-img"
-        />
-        <div class="card-img-overlay bg-overlay">
-          <h1 class="card-title text-white   ">{{ item.name }}</h1>
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+    
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
+      <div
+        *ngFor="let item of areas"
+        class="col pointer grow"
+        (click)="show(item)"
+      >
+        <div class="card border-0 text-white">
+          <img src="assets/images/area.jpg" alt="Card image" class="card-img" />
+          <div class="card-img-overlay bg-overlay">
+            <h1 class="card-title text-white">{{ item.name }}</h1>
+          </div>
         </div>
       </div>
     </div>
-    
   </div>
-  
+</div>
