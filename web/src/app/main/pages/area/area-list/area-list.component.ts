@@ -8,6 +8,8 @@ import { Area } from "app/@core/models/areas.model";
   styleUrls: ["./area-list.component.scss"],
 })
 export class AreaListComponent implements OnInit {
+  public contentHeader: object;
+
   areas: Area[];
   constructor(private _router: Router, private _route: ActivatedRoute) {}
 
@@ -16,6 +18,20 @@ export class AreaListComponent implements OnInit {
       console.log(data);
       this.areas = data.areas;
     });
+
+    this.contentHeader = {
+      headerTitle: "Rayons",
+      breadcrumb: {
+        type: "",
+        links: [
+          {
+            name: "Liste rayons",
+            isLink: true,
+            link: "/admin/areas",
+          },
+        ],
+      },
+    };
   }
 
   show(item: Area) {

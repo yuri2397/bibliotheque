@@ -1,5 +1,36 @@
-.doc-avatar{
-    width: 25px;
+.doc-avatar {
+    width: 30px;
     border: 3px solid white;
     border-radius: 8px;
+}
+
+.rotate {
+
+    transform: rotate(-90deg);
+
+
+    /* Legacy vendor prefixes that you probably don't need... */
+
+    /* Safari */
+    -webkit-transform: rotate(-90deg);
+
+    /* Firefox */
+    -moz-transform: rotate(-90deg);
+
+    /* IE */
+    -ms-transform: rotate(-90deg);
+
+    /* Opera */
+    -o-transform: rotate(-90deg);
+
+    /* Internet Explorer */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+
+}
+
+
+.doc-ref{
+    display: block;
+    white-space: nowrap;
+    color: white;
 }
