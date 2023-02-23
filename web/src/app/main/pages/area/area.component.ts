@@ -1,3 +1,4 @@
+import { Area } from 'app/@core/models/areas.model';
 import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
 import { Paginate } from "app/@core/models/paginate.model";
@@ -9,12 +10,18 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./area.component.scss"],
 })
 export class AreaComponent implements OnInit {
-  areas: Paginate<any>;
+  areas: Area[];
   constructor(private _router: Router, private _route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this._route.data.subscribe((data) => {
       console.log(data);
+      this.areas = data.areas;
+
     });
+  }
+
+  show(item: Area){
+    this._router.navigate([`${item.id}/details`], {relativeTo: this._route});
   }
 }

@@ -57,9 +57,11 @@ class AreaController extends Controller
      * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function show(Area $area)
+    public function show(Request $request, $id)
     {
-        return $area;
+         $area = Area::with($request->with ?? [])->find($id);
+
+         return $area;
     }
 
     /**

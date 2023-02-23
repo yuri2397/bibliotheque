@@ -28,5 +28,8 @@ class Area extends Model
         return $this->hasMany(Shelf::class);
     }
 
-    
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
 }

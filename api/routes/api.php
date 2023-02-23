@@ -11,6 +11,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DocumentCopyController;
 use App\Models\Area;
+use App\Models\Shelf;
 
 // AuthController
 
@@ -93,14 +94,23 @@ Route::prefix('areas')
 
 
 Route::any('/test', function (Request $request) {
-    $rest = [];
-   foreach ($request->data as $value) {
-        $a = new Area();
-        $a->name = $value['name'];
-        $a->slug = $value['slug'];
-        $a->save();
-        $rest[] = $a;
-   }
+    //     $rest = [];
+    //    foreach ($request->data as $value) {
+    //         $a = new Area();
+    //         $a->name = $value['name'];
+    //         $a->slug = $value['slug'];
+    //         $a->save();
+    //         $rest[] = $a;
+    //    }
 
-   return $rest;
+    //    return $rest;
+
+    // foreach (Area::all() as $value) {
+    //     for ($i = 0; $i < 5; $i++) {
+    //         $shelf = new Shelf();
+    //         $shelf->level = $i + 1;
+    //         $shelf->area_id = $value->id;
+    //         $shelf->save();
+    //     }
+    // }
 });
