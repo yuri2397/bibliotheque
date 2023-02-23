@@ -51,9 +51,10 @@
                         class="doc-avatar grow pointer"
                         [ngClass]="{ match: item.matched }"
                         (click)="docDetails(doc)"
+                        [ngbTooltip]="doc.reference"
                         alt="DOCUMENT"
                       />
-                      <span class="rotate position-absolute left-2 right-2 h-100 doc-ref">{{ doc.reference }}</span>
+                      <!-- <span class="rotate position-absolute left-0 right-0 h-100 doc-ref">{{ doc.reference }}</span> -->
                     </div>
                   </div>
                 </ng-container>
