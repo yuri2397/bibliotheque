@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use App\Trait\UUID;
 
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Shared\UUID;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class DocumentCopy extends Model
 {

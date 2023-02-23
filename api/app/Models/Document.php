@@ -61,6 +61,16 @@ class Document extends Model implements HasMedia
         );
     }
 
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
+    public function shelf()
+    {
+        return $this->belongsTo(Shelf::class);
+    }
+
     // get all borrowed copies of the document
 
     public function borrowed_copies()

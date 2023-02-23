@@ -23,5 +23,13 @@ class Area extends Model
         return $slug;
     }
 
-    
+    public function shelf()
+    {
+        return $this->hasMany(Shelf::class);
+    }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
 }

@@ -57,7 +57,7 @@ const routes: Routes = [
     CoreCommonModule,
     ContentHeaderModule,
     NgxDatatableModule,
-    TranslateModule
+    TranslateModule,
   ],
 })
 export class DocumentsModule {}

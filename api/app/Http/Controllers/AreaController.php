@@ -20,12 +20,16 @@ class AreaController extends Controller
             $query->where('name', 'like', '%' . $request->search . '%');
         }
 
-        return $query->paginate(
-            $request->per_page ?? 10,
-            $request->columns ?? ['*'],
-            $request->page_name ?? 'page',
-            $request->page ?? 1
-        );
+        if($request->has('per_page')){
+            return $query->paginate(
+                $request->per_page ?? 10,
+                $request->columns ?? ['*'],
+                $request->page_name ?? 'page',
+                $request->page ?? 1
+            );
+        }
+
+        return $query->get();
     }
 
     /**
@@ -53,9 +57,11 @@ class AreaController extends Controller
      * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function show(Area $area)
+    public function show(Request $request, $id)
     {
-        return $area;
+         $area = Area::with($request->with ?? [])->find($id);
+
+         return $area;
     }
 
     /**

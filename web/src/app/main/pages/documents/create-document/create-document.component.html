@@ -1,1 +1,87 @@
-<p>create-document works!</p>
+<!-- HEADER -->
+<div class="modal-header">
+  <h5 class="modal-title" id="create_document">
+    {{ "course.create.title" | translate }}
+  </h5>
+  <button
+    type="button"
+    class="close"
+    (click)="modal.dismiss('cancel')"
+    aria-label="Close"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- BODY -->
+<div class="modal-body py-4" tabindex="0" ngbAutofocus>
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label class="form-control-label" for="title">
+            {{ "course.field.title" | translate }}
+          </label>
+          <input
+            class="form-control input-md"
+            formControlName="title"
+            type="text"
+            placeholder="{{ 'DOCUMENT.TITLE' | translate }}"
+            id="title"
+            [class.error]="title.invalid && (title.dirty || title.touched)"
+          />
+          <span
+            *ngIf="title.invalid && (title.dirty || title.touched)"
+            class="invalid-form"
+          >
+            <small
+              class="form-text text-danger danger"
+              *ngIf="title.errors?.['required']"
+            >
+              {{ "form.validation.errors.required" | translate }}
+            </small>
+          </span>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label class="form-control-label" for="name">
+            {{ "course.field.name" | translate }}
+          </label>
+
+          <div class="ng-autocomplete">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- FOOTER -->
+<div class="modal-footer">
+  <div class="w-100 d-flex align-items-center justify-content-between">
+    <button
+      type="reset"
+      class="btn btn-outline-secondary"
+      (click)="modal.dismiss('cancel')"
+      rippleEffect
+    >
+      {{ "content.btn.cancel" | translate }}
+    </button>
+    <button
+      type="submit"
+      [disabled]="!form.valid || createdLoad"
+      (click)="submit(form.value)"
+      class="btn btn-primary mr-1"
+      rippleEffect
+    >
+      <span
+        *ngIf="createdLoad"
+        class="spinner-border spinner-border-sm"
+        role="status"
+        aria-hidden="true"
+      ></span>
+      {{ "content.btn.submit" | translate }}
+    </button>
+  </div>
+</div>
