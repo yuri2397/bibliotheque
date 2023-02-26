@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Document;
+use App\Models\DocumentCopy;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
@@ -18,13 +19,14 @@ class DocumentController extends Controller
 
         if ($request->has('q')) {
             $query->where('title', 'like', '%' . $request->q . '%');
+            
             $query->orWhereHas('authors', function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->q . '%');
             });
 
-            // $query->orWhereHas('slugs', function ($q) use ($request) {
-            //     $q->where('slug', 'like', '%' . $request->q . '%');
-            // });
+            $query->orWhereHas('slugs', function ($q) use ($request) {
+                $q->where('slug', 'like', '%' . $request->q . '%');
+            });
         }
 
         return $query->paginate(
@@ -48,10 +50,19 @@ class DocumentController extends Controller
             'title' => 'required',
             'summary' => 'required',
             'author_id' => 'required',
+            'copies' => ['numeric']
         ]);
 
         $request->merge(['reference' => Document::generateReference()]);
         $document = Document::create($request->all());
+        if($request->has('copies') && is_int($request->copies)){
+            for ($i=0; $i < $request->copies; $i++) { 
+                $cp = new DocumentCopy();
+                $cp->document_id = $document->id;
+                $cp->sub_reference = $document->reference . '/' . ($i + 1);
+                $cp->save();
+            }
+        }
 
         return $document;
     }

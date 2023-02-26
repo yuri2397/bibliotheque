@@ -23,12 +23,20 @@ import { AuthGuard } from "./auth/helpers/auth.guards";
 import { JwtInterceptor } from "./auth/helpers/jwt.interceptor";
 import { ErrorInterceptor } from "./auth/helpers/error.interceptor";
 import { AlreadyAuthGuard } from "./@core/security/already-auth.guard";
+import { PublicComponent } from "./main/public/public.component";
 
 const appRoutes: Routes = [
   {
     path: "",
-    redirectTo: "/admin",
+    redirectTo: "",
     pathMatch: "full",
+  },
+  {
+    path: "",
+    component: PublicComponent,
+    loadChildren: () =>
+      import("./main/public/public.module").then((m) => m.PublicModule),
+      canActivate: [AuthGuard],
   },
   {
     path: "admin",
@@ -36,7 +44,6 @@ const appRoutes: Routes = [
       import("./main/pages/pages.module").then((m) => m.PagesModule),
       canActivate: [AuthGuard],
   },
-  
   {
     path: "auth",
     loadChildren: () =>

@@ -50,7 +50,7 @@ Route::prefix('users')
 Route::prefix('documents')
     ->middleware('auth:sanctum')
     ->group(function () {
-        Route::get('/', [DocumentController::class, 'index']);
+        Route::get('/', [DocumentController::class, 'index'])->withoutMiddleware('auth:sanctum');
         Route::get('/{id}', [DocumentController::class, 'show']);
         Route::post('/', [DocumentController::class, 'store']);
         Route::put('/{id}', [DocumentController::class, 'update']);

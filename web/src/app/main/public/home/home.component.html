@@ -1,0 +1,939 @@
+<body>
+  <div class="cs-hero cs-style1 cs-center">
+    <div class="container">
+      <div
+        class="cs-hero__text wow fadeInRight"
+        data-wow-duration="0.8s"
+        data-wow-delay="0.3s"
+      >
+        <h2 class="cs-hero__title">
+          Bibliothèque centrale de Tivaouane <br />trésor de la religion
+          islamique
+        </h2>
+        <div class="cs-hero__subtitle">
+          Un voyage dans le temps au coeur de la religion islamique.
+          <br />Plongez dans l'histoire de la Tijaniya grâce à notre
+          bibliothèque centrale
+        </div>
+        <div class="cs-btns cs-style1">
+          <div class="col-ms-6 col-xs-12 col-lg-4">
+            <input
+              type="text"
+              name="search_query"
+              class="cs-form__field"
+              placeholder="Rechercher un document"
+              [(ngModel)]="searchQuery"
+            />
+          </div>
+          <a
+            (click)="searchDocuments()"
+            class="cs-btn cs-style1 cs-color1 cs-primary__font mx-2"
+          >
+            <span class="cs-btn__text">Rechercher</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="cs-hero__img cs-parallax">
+      <div class="cs-to__right">
+        <img src="assets/img/agency/hero-img.svg" alt="Hero Image" />
+      </div>
+    </div>
+    <div class="cs-partical__shape_wrap">
+      <div class="cs-partical__shape cs-shape__position1">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="30px"
+          height="30px"
+        >
+          <path
+            fill-rule="evenodd"
+            fill="rgb(189, 210, 249)"
+            d="M15.000,-0.000 C23.284,-0.000 30.000,6.715 30.000,15.000 C30.000,23.284 23.284,30.000 15.000,30.000 C6.716,30.000 -0.000,23.284 -0.000,15.000 C-0.000,6.715 6.716,-0.000 15.000,-0.000 Z"
+          />
+        </svg>
+      </div>
+      <div class="cs-partical__shape cs-shape__position2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="15px"
+          height="15px"
+        >
+          <path
+            fill-rule="evenodd"
+            fill="rgb(238, 118, 115)"
+            d="M7.500,-0.000 C11.642,-0.000 15.000,3.358 15.000,7.500 C15.000,11.642 11.642,15.000 7.500,15.000 C3.358,15.000 -0.000,11.642 -0.000,7.500 C-0.000,3.358 3.358,-0.000 7.500,-0.000 Z"
+          />
+        </svg>
+      </div>
+      <div class="cs-partical__shape cs-shape__position3">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="15px"
+          height="15px"
+        >
+          <path
+            fill-rule="evenodd"
+            fill="rgb(54, 97, 193)"
+            d="M7.500,-0.000 C11.642,-0.000 15.000,3.358 15.000,7.500 C15.000,11.642 11.642,15.000 7.500,15.000 C3.358,15.000 -0.000,11.642 -0.000,7.500 C-0.000,3.358 3.358,-0.000 7.500,-0.000 Z"
+          />
+        </svg>
+      </div>
+      <div class="cs-partical__shape cs-shape__position4">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="10px"
+          height="10px"
+        >
+          <path
+            fill-rule="evenodd"
+            fill="rgb(146, 179, 244)"
+            d="M5.000,-0.000 C7.761,-0.000 10.000,2.238 10.000,5.000 C10.000,7.761 7.761,10.000 5.000,10.000 C2.239,10.000 -0.000,7.761 -0.000,5.000 C-0.000,2.238 2.239,-0.000 5.000,-0.000 Z"
+          />
+        </svg>
+      </div>
+      <div class="cs-partical__shape cs-shape__position5">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="20px"
+          height="20px"
+        >
+          <path
+            fill-rule="evenodd"
+            fill="rgb(108, 136, 207)"
+            d="M10.000,-0.000 C15.523,-0.000 20.000,4.477 20.000,10.000 C20.000,15.523 15.523,20.000 10.000,20.000 C4.477,20.000 -0.000,15.523 -0.000,10.000 C-0.000,4.477 4.477,-0.000 10.000,-0.000 Z"
+          />
+        </svg>
+      </div>
+      <div class="cs-partical__shape cs-shape__position6">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="15px"
+          height="15px"
+        >
+          <path
+            fill-rule="evenodd"
+            fill="rgb(221, 232, 252)"
+            d="M7.500,-0.000 C11.642,-0.000 15.000,3.357 15.000,7.500 C15.000,11.642 11.642,15.000 7.500,15.000 C3.358,15.000 -0.000,11.642 -0.000,7.500 C-0.000,3.357 3.358,-0.000 7.500,-0.000 Z"
+          />
+        </svg>
+      </div>
+      <div class="cs-partical__shape cs-shape__position7">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          width="20"
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="60"
+            d="M368 368L144 144M368 144L144 368"
+          />
+        </svg>
+      </div>
+      <div class="cs-partical__shape cs-shape__position8">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="243px"
+          height="243px"
+        >
+          <path
+            fill-rule="evenodd"
+            fill="rgb(221, 232, 252)"
+            d="M121.500,0.000 C188.603,0.000 243.000,54.397 243.000,121.500 C243.000,188.602 188.603,243.000 121.500,243.000 C54.397,243.000 -0.000,188.602 -0.000,121.500 C-0.000,54.397 54.397,0.000 121.500,0.000 Z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <br /><br /><br /><br /><br />
+  <div class="cs-parallax cs-style1 mt-5">
+    <div class="container">
+      <div class="row">
+        <div
+          class="col-xl-6 wow fadeInRight"
+          data-wow-duration="0.8s"
+          data-wow-delay="0.2s"
+        >
+          <div class="cs-left__full__width">
+            <div class="cs-box cs-size1 cs-align__right cs-space55">
+              <img src="assets/img/agency/about1.svg" alt="" />
+            </div>
+          </div>
+        </div>
+        <!-- .col -->
+        <div class="col-xl-6">
+          <div class="cs-vertical__middle">
+            <div class="cs-vertical__middle__in">
+              <div class="cs-text__box cs-style1">
+                <h2 class="cs-text__box__title">Histoire de la Bibliothèque</h2>
+                <div class="cs-height__25 cs-height__lg__25"></div>
+                <div class="cs-text__box__text"></div>
+              </div>
+              <div class="cs-height__30 cs-height__lg__30"></div>
+              <ul class="cs-list cs-style1 cs-mp0">
+                <li>
+                  Présentation de l'historique de la bibliothèque centrale de
+                  Tivaouane : date de création, évolution au fil du temps,
+                  importance pour la ville et pour la religion islamique en
+                  général.
+                </li>
+                <li>
+                  Présentation des différents types de documents et livres
+                  disponibles dans la bibliothèque : manuscrits anciens,
+                  ouvrages de référence sur la religion islamique, écrits des
+                  grands savants de la Tijaniya, etc.
+                </li>
+                <li>
+                  Description des mesures de conservation mises en place pour
+                  préserver les documents de la bibliothèque, notamment les
+                  techniques de restauration et de numérisation.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- .col -->
+      </div>
+    </div>
+    <div class="cs-parallax__shape cs-position1 cs-to__left">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="15px"
+        height="15px"
+      >
+        <path
+          fill-rule="evenodd"
+          fill="rgb(71, 104, 238)"
+          d="M7.500,-0.000 C11.642,-0.000 15.000,3.357 15.000,7.500 C15.000,11.642 11.642,15.000 7.500,15.000 C3.358,15.000 -0.000,11.642 -0.000,7.500 C-0.000,3.357 3.358,-0.000 7.500,-0.000 Z"
+        />
+      </svg>
+    </div>
+    <div class="cs-parallax__shape cs-position2 cs-to__left">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="10px"
+        height="10px"
+      >
+        <path
+          fill-rule="evenodd"
+          fill="rgb(215, 201, 192)"
+          d="M5.000,-0.000 C7.761,-0.000 10.000,2.238 10.000,5.000 C10.000,7.761 7.761,10.000 5.000,10.000 C2.238,10.000 -0.000,7.761 -0.000,5.000 C-0.000,2.238 2.238,-0.000 5.000,-0.000 Z"
+        />
+      </svg>
+    </div>
+    <div
+      class="cs-parallax__shape cs-position3 cs-yellow__color cs-add__shape cs-to__left__up"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 512 512">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="80"
+          d="M256 112v288M400 256H112"
+        />
+      </svg>
+    </div>
+    <div
+      class="cs-parallax__shape cs-position4 cs-cross__shape cs-orange__color cs-to__rotate"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="60"
+          d="M368 368L144 144M368 144L144 368"
+        />
+      </svg>
+    </div>
+    <div class="cs-parallax__shape cs-position5 cs-to__up">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="243px"
+        height="243px"
+      >
+        <path
+          fill-rule="evenodd"
+          fill="rgb(221, 232, 252)"
+          d="M121.500,0.000 C188.603,0.000 243.000,54.397 243.000,121.500 C243.000,188.602 188.603,243.000 121.500,243.000 C54.397,243.000 -0.000,188.602 -0.000,121.500 C-0.000,54.397 54.397,0.000 121.500,0.000 Z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+  <div class="cs-height__130 cs-height__lg__70"></div>
+  <div class="cs-parallax cs-style2">
+    <div class="container">
+      <div class="row cs-row__reverse__xl">
+        <div class="col-xl-6">
+          <div class="cs-vertical__middle">
+            <div class="cs-vertical__middle__in">
+              <div class="cs-text__box cs-style1">
+                <h2 class="cs-text__box__title">
+                  Les grands savants de la Tijaniya
+                </h2>
+                <div class="cs-height__25 cs-height__lg__25"></div>
+                <div class="cs-text__box__text">
+                  <p>
+                    Présentation des grands savants de la Tijaniya, leurs
+                    contributions à la religion islamique et leur lien avec la
+                    ville de Tivaouane.
+                  </p>
+                  <p>
+                    Présentation de leurs écrits et publications disponibles
+                    dans la bibliothèque centrale de Tivaouane.
+                  </p>
+                  <p>
+                    Description des différentes branches de la Tijaniya et leur
+                    importance dans la religion islamique.
+                  </p>
+                </div>
+              </div>
+              <div class="cs-height__30 cs-height__lg__30"></div>
+              <!-- <div class="cs-btns cs-style1">
+                <a
+                  href="portfolio_1.html"
+                  class="cs-btn cs-style1 cs-color1 cs-primary__font"
+                >
+                  <span class="cs-btn__text">See Projects</span>
+                </a>
+                <a
+                  href="contact_1.html"
+                  class="cs-btn cs-style1 cs-color2 cs-primary__font"
+                >
+                  <span class="cs-btn__text">Free Consultant</span>
+                </a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <!-- .col -->
+        <div
+          class="col-xl-6 wow fadeInLeft"
+          data-wow-duration="0.8s"
+          data-wow-delay="0.3s"
+        >
+          <div class="cs-right__full__width">
+            <div class="cs-box cs-size1 cs-align__left cs-space55">
+              <img src="assets/img/agency/about2.svg" alt="" />
+            </div>
+          </div>
+        </div>
+        <!-- .col -->
+      </div>
+    </div>
+    <div class="cs-parallax__shape cs-position1 cs-to__up">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="243px"
+        height="243px"
+      >
+        <path
+          fill-rule="evenodd"
+          fill="rgb(221, 232, 252)"
+          d="M121.500,0.000 C188.603,0.000 243.000,54.397 243.000,121.500 C243.000,188.602 188.603,243.000 121.500,243.000 C54.397,243.000 -0.000,188.602 -0.000,121.500 C-0.000,54.397 54.397,0.000 121.500,0.000 Z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+
+  <div class="cs-height__130 cs-height__lg__70"></div>
+  <!-- End Projects -->
+
+  <!-- Start Counter -->
+  <div class="cs-gray__bg">
+    <div class="cs-parallax cs-style3">
+      <div class="cs-height__120 cs-height__lg__70"></div>
+      <div class="cs-section__heading cs-style1 text-center">
+        <h2
+          class="cs-section__title wow fadeInUp"
+          data-wow-duration="0.8s"
+          data-wow-delay="0.2s"
+        >
+          Les manuscrits anciens
+        </h2>
+        <div class="cs-height__25 cs-height__lg__15"></div>
+        <div class="cs-section__subtitle">
+          Présentation des manuscrits anciens conservés dans la bibliothèque
+          centrale de Tivaouane : leur histoire, leur origine, leur importance
+          historique et religieuse.
+        </div>
+      </div>
+      <div class="cs-height__70 cs-height__lg__50"></div>
+      <div class="container">
+        <div class="text-center">
+          <img src="assets/img/agency/counter-img.svg" alt="" />
+        </div>
+        <div class="cs-height__60 cs-height__lg__40"></div>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="cs-counter cs-style1 text-center">
+              <div class="cs-counter__number">
+                <span data-count-to="1200" class="odometer"></span>
+              </div>
+              <h4 class="cs-counter__title">Projets Done</h4>
+            </div>
+            <div class="cs-height__25 cs-height__lg__25"></div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="cs-counter cs-style1 text-center">
+              <div class="cs-counter__number">
+                <span data-count-to="854" class="odometer"></span>
+              </div>
+              <h4 class="cs-counter__title">Happy Clients</h4>
+            </div>
+            <div class="cs-height__25 cs-height__lg__25"></div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="cs-counter cs-style1 text-center">
+              <div class="cs-counter__number">
+                <span data-count-to="15" class="odometer"></span>
+              </div>
+              <h4 class="cs-counter__title">GET AWARDS</h4>
+            </div>
+            <div class="cs-height__25 cs-height__lg__25"></div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="cs-counter cs-style1 text-center">
+              <div class="cs-counter__number">
+                <span data-count-to="30" class="odometer"></span><span>+</span>
+              </div>
+              <h4 class="cs-counter__title">TOTAL EMPLOYEE</h4>
+            </div>
+            <div class="cs-height__25 cs-height__lg__25"></div>
+          </div>
+        </div>
+      </div>
+      <div class="cs-height__100 cs-height__lg__45"></div>
+      <div class="cs-parallax__shape cs-position1 cs-to__left">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="380px"
+          height="183px"
+        >
+          <path
+            fill-rule="evenodd"
+            fill="rgb(106, 208, 53)"
+            d="M378.984,-0.000 C252.656,0.124 126.328,0.248 -0.000,0.372 C-0.000,0.372 36.612,88.662 173.743,81.860 C173.743,81.860 225.550,196.399 380.000,181.690 C379.661,121.126 379.323,60.563 378.984,-0.000 Z"
+          />
+        </svg>
+      </div>
+      <div class="cs-parallax__shape cs-position2 cs-to__right">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="385px"
+          height="183px"
+        >
+          <path
+            fill-rule="evenodd"
+            fill="rgb(152, 141, 182)"
+            d="M1.335,182.997 C129.220,182.658 257.104,182.319 384.989,181.981 C384.989,181.981 347.774,93.769 208.964,100.802 C208.964,100.802 156.322,-13.629 -0.006,1.341 C0.441,61.893 0.888,122.445 1.335,182.997 Z"
+          />
+        </svg>
+      </div>
+      <div class="cs-parallax__shape cs-position3 cs-to__left">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="16px"
+          height="16px"
+        >
+          <path
+            fill-rule="evenodd"
+            fill="rgb(131, 104, 207)"
+            d="M8.000,-0.000 C12.418,-0.000 16.000,3.582 16.000,8.000 C16.000,12.418 12.418,16.000 8.000,16.000 C3.582,16.000 -0.000,12.418 -0.000,8.000 C-0.000,3.582 3.582,-0.000 8.000,-0.000 Z"
+          />
+        </svg>
+      </div>
+      <div
+        class="cs-parallax__shape cs-position4 cs-to__right cs-cross__shape cs-green__color"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          width="20"
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="60"
+            d="M368 368L144 144M368 144L144 368"
+          ></path>
+        </svg>
+      </div>
+      <div class="cs-parallax__shape cs-position5 cs-to__left">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="25px"
+          height="25px"
+        >
+          <path
+            fill-rule="evenodd"
+            fill="rgb(238, 118, 115)"
+            d="M12.500,-0.000 C19.403,-0.000 25.000,5.596 25.000,12.500 C25.000,19.403 19.403,25.000 12.500,25.000 C5.596,25.000 -0.000,19.403 -0.000,12.500 C-0.000,5.596 5.596,-0.000 12.500,-0.000 Z"
+          />
+        </svg>
+      </div>
+      <div class="cs-parallax__shape cs-position6 cs-to__left">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="20px"
+          height="20px"
+        >
+          <path
+            fill-rule="evenodd"
+            fill="rgb(174, 155, 225)"
+            d="M10.000,-0.000 C15.523,-0.000 20.000,4.477 20.000,10.000 C20.000,15.522 15.523,20.000 10.000,20.000 C4.477,20.000 -0.000,15.522 -0.000,10.000 C-0.000,4.477 4.477,-0.000 10.000,-0.000 Z"
+          />
+        </svg>
+      </div>
+      <div class="cs-parallax__shape cs-position7 cs-to__right cs-add__shape">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="60"
+            d="M256 112v288M400 256H112"
+          ></path>
+        </svg>
+      </div>
+      <div class="cs-parallax__shape cs-position8 cs-to__left">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="13px"
+          height="13px"
+        >
+          <path
+            fill-rule="evenodd"
+            fill="rgb(254, 179, 107)"
+            d="M6.500,-0.000 C10.090,-0.000 13.000,2.910 13.000,6.500 C13.000,10.089 10.090,13.000 6.500,13.000 C2.910,13.000 -0.000,10.089 -0.000,6.500 C-0.000,2.910 2.910,-0.000 6.500,-0.000 Z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <!-- End Counter -->
+
+  <!-- Start Testimonial -->
+  <div class="cs-parallax cs-style4">
+    <div class="container">
+      <div class="cs-height__120 cs-height__lg__70"></div>
+      <div class="cs-section__heading cs-style1 text-center">
+        <h2
+          class="cs-section__title wow fadeInUp"
+          data-wow-duration="0.8s"
+          data-wow-delay="0.2s"
+        >
+          Clients Feedback
+        </h2>
+        <div class="cs-height__25 cs-height__lg__15"></div>
+        <div class="cs-section__subtitle">
+          Consulted he eagerness unfeeling deficient existence of. Calling
+          nothing end fertile for venture <br />way boy. Esteem spirit temper
+          too say adieus who direct esteem.
+        </div>
+      </div>
+      <div class="cs-height__70 cs-height__lg__50"></div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="cs-left__full__width">
+            <div class="cs-box cs-size1 cs-align__right">
+              <img src="assets/img/agency/testimonial-img.svg" alt="" />
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-lg-6 wow fadeInRight"
+          data-wow-duration="0.8s"
+          data-wow-delay="0.3s"
+        >
+          <div class="cs-vertical__middle">
+            <div class="cs-vertical__middle__in">
+              <div class="cs-slider cs-style1 cs-testimonial__slider__style1">
+                <div class="cs-tesimonial__shape cs-style1"></div>
+                <div class="cs-tesimonial__shape cs-style2"></div>
+                <div class="cs-tesimonial__shape cs-style3"></div>
+                <div
+                  class="cs-slider__container"
+                  data-autoplay="0"
+                  data-loop="1"
+                  data-speed="600"
+                  data-center="0"
+                  data-fade-slide="1"
+                  data-slides-per-view="1"
+                >
+                  <div class="cs-slider__wrapper">
+                    <div class="cs-slide">
+                      <div class="cs-testimonial cs-style1">
+                        <div class="cs-testimonial__info">
+                          <div class="cs-testimonial__avatar">
+                            <img
+                              src="assets/img/agency/testimonial1.jpg"
+                              alt=""
+                            />
+                          </div>
+                          <div class="cs-testimonial__meta">
+                            <h3 class="cs-testimonial__avatar_name">
+                              Dhony Anthony
+                            </h3>
+                            <div class="cs-testimonial__avatar_designation">
+                              Executive Chairman
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cs-testimonial__text">
+                          “There are many variations of passages of Lorem are
+                          Ipsum available, but the majority have suffered altera
+                          in some form, by injected humour, or randomised words
+                          which don't look slightly believable.”
+                        </div>
+                      </div>
+                    </div>
+                    <!-- .cs-slide -->
+                    <div class="cs-slide">
+                      <div class="cs-testimonial cs-style1">
+                        <div class="cs-testimonial__info">
+                          <div class="cs-testimonial__avatar">
+                            <img
+                              src="assets/img/agency/testimonial2.jpg"
+                              alt=""
+                            />
+                          </div>
+                          <div class="cs-testimonial__meta">
+                            <h3 class="cs-testimonial__avatar_name">
+                              Charles Wilson
+                            </h3>
+                            <div class="cs-testimonial__avatar_designation">
+                              Managing Director
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cs-testimonial__text">
+                          “The research and development factor can be summed up
+                          in one word: enterprise. The power to evolve
+                          compellingly leads to the power to reinvent iteravely.
+                          Without subscriber communities.”
+                        </div>
+                      </div>
+                    </div>
+                    <!-- .cs-slide -->
+                    <div class="cs-slide">
+                      <div class="cs-testimonial cs-style1">
+                        <div class="cs-testimonial__info">
+                          <div class="cs-testimonial__avatar">
+                            <img
+                              src="assets/img/agency/testimonial3.jpg"
+                              alt=""
+                            />
+                          </div>
+                          <div class="cs-testimonial__meta">
+                            <h3 class="cs-testimonial__avatar_name">
+                              Christopher Williams
+                            </h3>
+                            <div class="cs-testimonial__avatar_designation">
+                              Acting Manager
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cs-testimonial__text">
+                          “Without supply-chains, you will lack Total Quality
+                          Management. The metrics for schemas are more
+                          well-understood if they are not frictionless,
+                          magnetic. We will evolve the ability.”
+                        </div>
+                      </div>
+                    </div>
+                    <!-- .cs-slide -->
+                  </div>
+                </div>
+                <!-- .cs-slider__container -->
+                <!-- <div class="cs-pagination cs-style1 cs-hidden"></div> -->
+                <div class="cs-slider__arrows cs-style2">
+                  <div class="cs-left__arrow cs-center">
+                    <i class="fas fa-long-arrow-alt-left"></i>
+                  </div>
+                  <div class="cs-right__arrow cs-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                  </div>
+                </div>
+              </div>
+              <!-- .cs-slider -->
+            </div>
+          </div>
+        </div>
+        <!-- .col -->
+      </div>
+    </div>
+    <div class="cs-parallax__shape cs-position1 cs-to__up">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="15px"
+        height="15px"
+      >
+        <path
+          fill-rule="evenodd"
+          fill="rgb(101, 198, 50)"
+          d="M7.500,-0.000 C11.642,-0.000 15.000,3.358 15.000,7.500 C15.000,11.642 11.642,15.000 7.500,15.000 C3.358,15.000 -0.000,11.642 -0.000,7.500 C-0.000,3.358 3.358,-0.000 7.500,-0.000 Z"
+        />
+      </svg>
+    </div>
+    <div class="cs-parallax__shape cs-position2 cs-to__left">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="15px"
+        height="15px"
+      >
+        <path
+          fill-rule="evenodd"
+          fill="rgb(252, 210, 5)"
+          d="M7.500,-0.000 C11.642,-0.000 15.000,3.358 15.000,7.500 C15.000,11.642 11.642,15.000 7.500,15.000 C3.358,15.000 -0.000,11.642 -0.000,7.500 C-0.000,3.358 3.358,-0.000 7.500,-0.000 Z"
+        />
+      </svg>
+    </div>
+    <div class="cs-parallax__shape cs-position3 cs-to__right">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="15px"
+        height="15px"
+      >
+        <path
+          fill-rule="evenodd"
+          fill="rgb(235, 235, 235)"
+          d="M7.500,-0.000 C11.642,-0.000 15.000,3.358 15.000,7.500 C15.000,11.642 11.642,15.000 7.500,15.000 C3.358,15.000 -0.000,11.642 -0.000,7.500 C-0.000,3.358 3.358,-0.000 7.500,-0.000 Z"
+        />
+      </svg>
+    </div>
+    <div class="cs-parallax__shape cs-position4 cs-to__rotate cs-add__shape">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 512 512">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="60"
+          d="M256 112v288M400 256H112"
+        ></path>
+      </svg>
+    </div>
+    <div class="cs-parallax__shape cs-position5 cs-to__left">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="28px"
+        height="28px"
+      >
+        <path
+          fill-rule="evenodd"
+          fill="rgb(112, 87, 248)"
+          d="M14.000,-0.000 C21.732,-0.000 28.000,6.268 28.000,14.000 C28.000,21.732 21.732,28.000 14.000,28.000 C6.268,28.000 -0.000,21.732 -0.000,14.000 C-0.000,6.268 6.268,-0.000 14.000,-0.000 Z"
+        />
+      </svg>
+    </div>
+  </div>
+ 
+  <footer class="cs-footer cs-style1 cs-parallax mt-5">
+    <div class="cs-height__110 cs-height__lg__70"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-sm-6">
+          <div class="cs-footer__item">
+            <h2 class="cs-widget__title">About</h2>
+            <div class="cs-footer__widget__text">
+              We always try to give our best quality guidence for our all
+              clients. So they will success & growth business well.
+            </div>
+            <div class="cs-height__15 cs-height__lg__15"></div>
+            <div class="cs-social__btns cs-style1">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- .col -->
+        <div class="col-lg-3 col-sm-6">
+          <div class="cs-footer__item widget_nav_menu">
+            <h2 class="cs-widget__title">Services</h2>
+            <ul class="menu">
+              <li><a href="#">IT Consultant</a></li>
+              <li><a href="#">Business Growth</a></li>
+              <li><a href="#">Investent Plan</a></li>
+              <li><a href="#">Product Development</a></li>
+              <li><a href="#">Industrial Consultant</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- .col -->
+        <div class="col-lg-3 col-sm-6">
+          <div class="cs-footer__item widget_nav_menu">
+            <h2 class="cs-widget__title">Support</h2>
+            <ul class="menu">
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Product</a></li>
+              <li><a href="#">Reporting Issue</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- .col -->
+        <div class="col-lg-3 col-sm-6">
+          <div class="cs-footer__item widget_nav_menu">
+            <h2 class="cs-widget__title">Quick Links</h2>
+            <ul class="menu">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about_2.html">About</a></li>
+              <li><a href="service.html">Services</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
+              <li><a href="contact_1.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- .col -->
+      </div>
+      <!-- <div class="cs-height__85 cs-height__lg__40"></div> -->
+    </div>
+    <div class="cs-copyright text-center">
+      <div class="container">
+        © 2020 - Lala by Laralink. All Rights Reserved.
+      </div>
+    </div>
+    <div class="cs-parallax__shape cs-position1">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="13px"
+        height="13px"
+      >
+        <path
+          fill-rule="evenodd"
+          fill="rgb(97, 192, 49)"
+          d="M6.500,-0.000 C10.090,-0.000 13.000,2.910 13.000,6.500 C13.000,10.090 10.090,13.000 6.500,13.000 C2.910,13.000 -0.000,10.090 -0.000,6.500 C-0.000,2.910 2.910,-0.000 6.500,-0.000 Z"
+        />
+      </svg>
+    </div>
+    <div class="cs-parallax__shape cs-position2 cs-to__up">
+      <img src="assets/img/agency/footer-image.png" alt="" />
+    </div>
+    <div class="cs-parallax__shape cs-position3 cs-to__left__up">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="416px"
+        height="403px"
+      >
+        <path
+          fill-rule="evenodd"
+          fill="rgb(51, 69, 100)"
+          d="M210.500,62.000 C284.230,62.000 344.000,121.769 344.000,195.499 C344.000,269.229 284.230,328.999 210.500,328.999 C136.770,328.999 77.000,269.229 77.000,195.499 C77.000,121.769 136.770,62.000 210.500,62.000 Z"
+        />
+        <path
+          fill-rule="evenodd"
+          stroke="rgb(29, 46, 75)"
+          stroke-width="2px"
+          stroke-linecap="butt"
+          stroke-linejoin="miter"
+          fill="none"
+          d="M207.500,1.000 C321.547,1.000 414.000,90.543 414.000,201.000 C414.000,311.457 321.547,401.000 207.500,401.000 C93.453,401.000 1.000,311.457 1.000,201.000 C1.000,90.543 93.453,1.000 207.500,1.000 Z"
+        />
+      </svg>
+    </div>
+    <div class="cs-parallax__shape cs-position4">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="10px"
+        height="10px"
+      >
+        <path
+          fill-rule="evenodd"
+          fill="rgb(62, 80, 110)"
+          d="M5.000,-0.000 C7.761,-0.000 10.000,2.238 10.000,5.000 C10.000,7.761 7.761,10.000 5.000,10.000 C2.238,10.000 -0.000,7.761 -0.000,5.000 C-0.000,2.238 2.238,-0.000 5.000,-0.000 Z"
+        />
+      </svg>
+    </div>
+    <div class="cs-parallax__shape cs-position5">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="15px"
+        height="15px"
+      >
+        <path
+          fill-rule="evenodd"
+          fill="rgb(112, 87, 248)"
+          d="M7.500,-0.000 C11.642,-0.000 15.000,3.358 15.000,7.500 C15.000,11.642 11.642,15.000 7.500,15.000 C3.358,15.000 -0.000,11.642 -0.000,7.500 C-0.000,3.358 3.358,-0.000 7.500,-0.000 Z"
+        />
+      </svg>
+    </div>
+  </footer>
+  <!-- Footer Section -->
+
+  <!-- Start Video Popup -->
+  <div class="cs-video__popup">
+    <div class="cs-video__popup__overlay"></div>
+    <div class="cs-video__popup__content">
+      <div class="cs-video__popup__layer"></div>
+      <div class="cs-video__popup__container">
+        <div class="cs-video__popup__align">
+          <div class="ratio ratio-16x9">
+            <iframe src="about:blank"></iframe>
+          </div>
+        </div>
+        <div class="cs-video__popup__close"></div>
+      </div>
+    </div>
+  </div>
+  <!-- End Video Popup -->
+
+  <div id="cs-scrollup"><i class="fas fa-chevron-up"></i></div>
+
+  <!-- Script -->
+  <script src="assets/js/jquery-1.12.4.min.js"></script>
+  <script src="assets/js/isotope.pkg.min.js"></script>
+  <script src="assets/js/wow.min.js"></script>
+  <script src="assets/js/jquery.slick.min.js"></script>
+  <script src="assets/js/lightgallery.min.js"></script>
+  <script src="assets/js/jquery.counter.min.js"></script>
+  <script src="assets/js/select2.min.js"></script>
+  <script src="assets/js/ripples.min.js"></script>
+  <script src="assets/js/jquery-ui.min.js"></script>
+  <script src="assets/js/animated-headline.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
