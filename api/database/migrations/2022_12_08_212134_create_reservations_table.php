@@ -25,8 +25,8 @@ return new class extends Migration {
                 ->foreignUuid('document_copy_id')
                 ->references('id')
                 ->on('document_copies');
-            $table->timestamp('reserved_at');
-            $table->timestamp('expires_at');
+            $table->timestamp('reserved_at')->nullable();
+            $table->timestamp('expires_at')->nullable();
             $table->timestamp('checked_out_at')->nullable();
             $table->timestamp('returned_at')->nullable();
             $table->timestamps();

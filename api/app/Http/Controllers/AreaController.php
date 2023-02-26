@@ -43,6 +43,7 @@ class AreaController extends Controller
         // validation
         $request->validate([
             'name' => 'required',
+            'description' => 'required',
         ]);
 
         $request->merge(['slug' => Area::generateSlug($request->name)]);

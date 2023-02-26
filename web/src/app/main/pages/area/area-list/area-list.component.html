@@ -1,12 +1,15 @@
+<div class="d-flex pull-right">
+  <button type="button" class="btn btn-primary" rippleEffect (click)="openCreateModal(createModal)">
+    <span [data-feather]="'book'" [class]="'mr-25'"></span>Ajouter un
+    Rayon</button>
+</div>
 <div class="content-wrapper container-xxl p-0">
   <div class="content-body">
-    <app-content-header [contentHeader]="contentHeader"></app-content-header>
-    <div class="d-flex">
-      <button type="button" class="btn btn-primary" rippleEffect (click)="openCreateModal(createModal)">
-        <span [data-feather]="'book'" [class]="'mr-25'"></span>Ajouter un
-        Rayon</button>
-    </div>
-    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
+    <app-content-header [contentHeader]="contentHeader">
+      
+    </app-content-header>
+   
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3 mb-2">
       <div
         *ngFor="let item of areas"
         class="col pointer grow"
@@ -23,6 +26,9 @@
   </div>
 </div>
 <div class="modal-primary d-inline-block">
+  <!-- <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button> -->
   <ng-template #createModal let-modal>
     <app-create-document [modal]="modal">
       <form class="auth-login-form mt-3 mb-3 ml-2 mr-2" [formGroup]="loginForm"
@@ -31,9 +37,10 @@
         <label for="login-email" class="form-label">name</label>
         <input type="text" formControlName="username" class="form-control"
           placeholder="nom du rayon"
-          aria-describedby="login-username" tabindex="1" autofocus
-          [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+          aria-describedby="login-username" tabindex="1" autofocus />
+          <textarea name="" id="" cols="30" rows="10">description</textarea>
       </div>
+      
       <button [disabled]="loading" class="btn btn-primary btn-block"
         tabindex="4" rippleEffect>
         <span *ngIf="loading" class="spinner-border spinner-border-sm"

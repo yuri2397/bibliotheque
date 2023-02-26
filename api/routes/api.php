@@ -35,6 +35,7 @@ Route::prefix('auth')
 
 // UserController
 
+
 Route::prefix('users')
     ->middleware('auth:sanctum')
     ->group(function () {
@@ -70,7 +71,6 @@ Route::prefix('document-copies')
     });
 
 
-
 Route::prefix('authors')
     ->middleware('auth:sanctum')
     ->group(function () {
@@ -80,12 +80,12 @@ Route::prefix('authors')
         Route::put('/{id}', [AuthorController::class, 'update']);
         Route::delete('/{id}', [AuthorController::class, 'destroy']);
     });
-Route::post('/', [AreaController::class, 'store']);
 Route::prefix('areas')
     ->middleware('auth:sanctum')
     ->group(function () {
         Route::get('/', [AreaController::class, 'index']);
         Route::get('/{id}', [AreaController::class, 'show']);
+        Route::post('/', [AreaController::class, 'store']);
         Route::put('/{id}', [AreaController::class, 'update']);
         Route::delete('/{id}', [AreaController::class, 'destroy']);
     });
