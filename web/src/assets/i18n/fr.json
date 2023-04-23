@@ -22,7 +22,10 @@
     "author": "Author",
     "field": {
       "image": "Image",
-         "reference": "Référence",
+        "reference": "Référence",
+        "copies": "Copies",
+        "shelf": "Etagère",
+        "area": "Rayon",
         "title": "Titre",
         "summary": "Resumé",
         "author": "Auteur",
@@ -71,6 +74,7 @@
     "btn_save": "Enregistrer",
     "btn_close": "Fermer",
     "btn_remove":"Supprimer",
+    "btn_take_picture": "Prendre une photo",
     "placeholder": {
       "search": "Rechercher"
     },

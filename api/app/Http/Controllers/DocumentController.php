@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Document;
 use App\Models\DocumentCopy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DocumentController extends Controller
 {
@@ -118,8 +119,15 @@ class DocumentController extends Controller
      * @param  \App\Models\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Document $document)
+    public function destroy($id)
     {
-        
+        $document_copies = DocumentCopy::where('document_id', $id)->get();
+        foreach ($document_copies as $copy) {
+            $copy->delete();
+        }
+        $document = Document::find($id);
+        $document->delete();
+
+        return response()->json(['message' => 'Document deleted successfully']);
     }
 }

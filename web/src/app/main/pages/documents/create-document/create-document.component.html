@@ -19,7 +19,7 @@
             <div class="col-12">
                 <button class="btn btn-primary" (click)="image?.click()" >
                     <i data-feather="camera" class="mr-0 mr-sm-1"></i>
-                    Choisir Image
+                    {{ 'content.btn_take_picture'|translate }}
                 </button>
             </div>
         </div>
@@ -28,13 +28,13 @@
             <div class="col">
                 <div class="form-group">
                     <label class="form-control-label" for="title">
-                        {{ "documents.title" | translate }}
+                        {{ "documents.field.title" | translate }}
                     </label>
                     <input
                             class="form-control input-md"
                             formControlName="title"
                             type="text"
-                            placeholder="{{ 'documents.title' | translate }}"
+                            placeholder="{{ 'documents.field.title' | translate }}"
                             id="title"
                             [class.error]="title.invalid && (title.dirty || title.touched)"
                     />
@@ -54,14 +54,14 @@
             <div class="col">
                 <div class="form-group">
                     <label class="form-control-label" for="author_id">
-                        {{ "documents.author" | translate }}
+                        {{ "documents.field.author" | translate }}
                     </label>
                     <ng-select
                             id="author_id"
                             readonly
                             [class.error]="author_id.invalid && (author_id.dirty || author_id.touched)"
                             formControlName="author_id"
-                            [placeholder]="'documents.author' | translate"
+                            [placeholder]="'documents.field.author' | translate"
                             [loading]="authorLoading"
                             ngModel
                             (ngModelChange)="onAuthorSearch($event)"
@@ -77,13 +77,13 @@
             <div class="col">
                 <div class="form-group">
                     <label class="form-control-label" for="reference">
-                        {{ "documents.reference" | translate }}
+                        {{ "documents.field.reference" | translate }}
                     </label>
                     <input
                             class="form-control input-md"
                             formControlName="reference"
                             type="text"
-                            placeholder="{{ 'documents.reference' | translate }}"
+                            placeholder="{{ 'documents.field.reference' | translate }}"
                             id="reference"
                             [class.error]="reference.invalid && (reference.dirty || reference.touched)"
                     />
@@ -103,14 +103,14 @@
             <div class="col">
                 <div class="form-group">
                     <label class="form-control-label" for="copies">
-                        {{ "documents.copies" | translate }}
+                        {{ "documents.field.copies" | translate }}
                     </label>
                     <input
                             class="form-control input-md"
                             formControlName="copies"
                             type="number"
                             min="1"
-                            placeholder="{{ 'documents.copies' | translate }}"
+                            placeholder="{{ 'documents.field.copies' | translate }}"
                             id="copies"
                             [class.error]="copies.invalid && (copies.dirty || copies.touched)"
                     />
@@ -134,14 +134,14 @@
             <div class="col">
                 <div class="form-group">
                     <label class="form-control-label" for="area_id">
-                        {{ "documents.area" | translate }}
+                        {{ "documents.field.area" | translate }}
                     </label>
                     <ng-select
                             id="area_id"
                             readonly
                             [class.error]="area_id.invalid && (area_id.dirty || area_id.touched)"
                             formControlName="area_id"
-                            [placeholder]="'documents.area' | translate"
+                            [placeholder]="'documents.field.area' | translate"
                             [loading]="areaLoading"
                             ngModel
                             (ngModelChange)="onAreaChange($event)"
@@ -155,14 +155,14 @@
             <div class="col">
                 <div class="form-group">
                     <label class="form-control-label" for="shelf_id">
-                        {{ "documents.shelf" | translate }}
+                        {{ "documents.field.shelf" | translate }}
                     </label>
                     <ng-select
                             id="shelf_id"
                             readonly
                             [class.error]="shelf_id.invalid && (shelf_id.dirty || shelf_id.touched)"
                             formControlName="shelf_id"
-                            [placeholder]="'documents.shelf' | translate"
+                            [placeholder]="'documents.field.shelf' | translate"
                             ngModel
                     >
                         <ng-option *ngFor="let item of shelfs" [value]="item.id"
@@ -176,9 +176,10 @@
         <div class="row">
             <div class="col-12">
                 <label class="form-control-label" for="summary">
-                    {{ "documents.summary" | translate }}
+                    {{ "documents.field.summary" | translate }}
                 </label>
                 <textarea formControlName="summary"
+                [placeholder]=" 'documents.field.summary' | translate"
                           [class.error]="summary.invalid && (summary.dirty || summary.touched)"
                           type="text" class="form-control input-md" name="summary" id="summary" cols="30" rows="4">
                 </textarea>
