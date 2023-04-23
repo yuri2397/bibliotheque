@@ -1,4 +1,20 @@
 {
+  "auth":{
+    "username":{
+      "text": "Nom d'utilisateur",
+      "required": "Nom d'utilisateur est obligatoire"
+    },
+    "password":{
+      "text": "Mot de passe",
+      "required": "Mot de passe est obligatoire"
+    },
+    "remember":{
+      "text": "Se souvenir de moi"
+    },
+    "btn_signin":{
+      "text": "Se connecter"
+    }
+  },
   "documents": {
     "title": "Titre",
     "list": "Liste des documents",
