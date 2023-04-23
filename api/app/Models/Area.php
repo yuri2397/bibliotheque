@@ -11,7 +11,8 @@ class Area extends Model
 {
     use HasFactory, UUID;
 
-    protected $fillable = ['name', 'slug'];
+    protected $appends = ['count_shelf', 'count_document'];
+    protected $fillable = ['name', 'slug','shelf'];
 
     public static function generateSlug($name)
     {

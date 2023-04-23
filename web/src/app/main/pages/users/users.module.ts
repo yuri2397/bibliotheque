@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users.component';
 import { Route, RouterModule, Routes } from '@angular/router';
-import { ListeUserComponent } from './liste-user/liste-user.component';
 import { UserResolver } from 'app/@core/resolver/user.resolver';
 import { DetailUserComponent } from './detail-user/detail-user.component';
 import { CreateUserComponent } from './create-user/create-user.component';
-import { UpdateUserComponent } from '../../../update-user/update-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { ListUserComponent } from './list-user/list-user.component';
 
 
 const routes :Routes = [
   {
     path :"",
-    component : ListeUserComponent,
+    component : ListUserComponent,
     data :{animation : "liste" },
     resolve : {
       user : UserResolver
@@ -39,7 +39,10 @@ const routes :Routes = [
 @NgModule({
   declarations: [
     UsersComponent,
-    
+    DetailUserComponent,
+    CreateUserComponent,
+    UpdateUserComponent,
+    ListUserComponent
   ],
   imports: [
     CommonModule,
