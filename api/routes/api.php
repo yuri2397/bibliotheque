@@ -35,6 +35,7 @@ Route::prefix('auth')
 
 // UserController
 
+
 Route::prefix('users')
     ->middleware('auth:sanctum')
     ->group(function () {
@@ -70,7 +71,6 @@ Route::prefix('document-copies')
     });
 
 
-
 Route::prefix('authors')
     ->middleware('auth:sanctum')
     ->group(function () {
@@ -80,7 +80,6 @@ Route::prefix('authors')
         Route::put('/{id}', [AuthorController::class, 'update']);
         Route::delete('/{id}', [AuthorController::class, 'destroy']);
     });
-
 Route::prefix('areas')
     ->middleware('auth:sanctum')
     ->group(function () {
@@ -94,16 +93,16 @@ Route::prefix('areas')
 
 
 Route::any('/test', function (Request $request) {
-    //     $rest = [];
-    //    foreach ($request->data as $value) {
-    //         $a = new Area();
-    //         $a->name = $value['name'];
-    //         $a->slug = $value['slug'];
-    //         $a->save();
-    //         $rest[] = $a;
-    //    }
+        $rest = [];
+       foreach ($request->data as $value) {
+            $a = new Area();
+            $a->name = $value['name'];
+            $a->slug = $value['slug'];
+            $a->save();
+            $rest[] = $a;
+       }
 
-    //    return $rest;
+       return $rest;
 
     // foreach (Area::all() as $value) {
     //     for ($i = 0; $i < 5; $i++) {
@@ -113,4 +112,5 @@ Route::any('/test', function (Request $request) {
     //         $shelf->save();
     //     }
     // }
+
 });

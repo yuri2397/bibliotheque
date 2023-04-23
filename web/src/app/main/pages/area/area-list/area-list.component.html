@@ -1,3 +1,8 @@
+<div class="d-flex pull-right">
+  <button type="button" class="btn btn-primary" rippleEffect (click)="openCreateModal(createModal)">
+    <span [data-feather]="'book'" [class]="'mr-25'"></span>Ajouter un
+    Rayon</button>
+</div>
 <div class="content-wrapper container-xxl p-0">
   <div class="content-body">
     <h3>{{ 'areas.title'|translate }}</h3>
@@ -113,4 +118,30 @@
 
   <swal #SweetAlertConfirmText (open)="ConfirmTextOpen()"></swal>
 
+</div>
+<div class="modal-primary d-inline-block">
+  <!-- <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button> -->
+  <ng-template #createModal let-modal>
+    <app-create-document [modal]="modal">
+      <form class="auth-login-form mt-3 mb-3 ml-2 mr-2" [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()" >
+      <div class="form-group">
+        <label for="login-email" class="form-label">name</label>
+        <input type="text" formControlName="username" class="form-control"
+          placeholder="nom du rayon"
+          aria-describedby="login-username" tabindex="1" autofocus />
+          <textarea name="" id="" cols="30" rows="10">description</textarea>
+      </div>
+      
+      <button [disabled]="loading" class="btn btn-primary btn-block"
+        tabindex="4" rippleEffect>
+        <span *ngIf="loading" class="spinner-border spinner-border-sm"
+          role="status" aria-hidden="true"></span>
+        Enregistrer 
+      </button>
+    </form>
+    </app-create-document>
+  </ng-template>
 </div>
