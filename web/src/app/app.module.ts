@@ -36,8 +36,7 @@ const appRoutes: Routes = [
         path: 'public',
         component: PublicComponent,
         loadChildren: () =>
-            import('./main/public/public.module').then((m) => m.PublicModule),
-        canActivate: [AuthGuard],
+            import('./main/public/public.module').then((m) => m.PublicModule)
     },
     {
         path: 'admin',
