@@ -1,20 +1,116 @@
 <div class="content-wrapper container-xxl p-0">
   <div class="content-body">
-    <app-content-header [contentHeader]="contentHeader"></app-content-header>
-    
-    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
-      <div
-        *ngFor="let item of areas"
-        class="col pointer grow"
-        (click)="show(item)"
-      >
-        <div class="card border-0 text-white">
-          <img src="assets/images/area.jpg" alt="Card image" class="card-img" />
-          <div class="card-img-overlay bg-overlay">
-            <h1 class="card-title text-white">{{ item.name }}</h1>
+    <h3>{{ 'areas.title'|translate }}</h3>
+    <section class="users-list-wrapper">
+      <div class="card">
+        <div class="row">
+          <div class="col-md-6 col-12">
+            <div class="d-flex justify-content-between align-items-center m-1">
+              <label class="d-flex align-items-center">
+                <select
+                        class="form-control mx-25"
+                        (change)="paginate()"
+                        [(ngModel)]="queryParams.per_page">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="25">25</option>
+                  <option value="30">30</option>
+                  {{
+                  "page.select_size" | translate
+                  }}
+                </select>
+              </label>
+            </div>
+          </div>
+          <div
+                  class="col-md-6 col-12 d-flex justify-content-start
+            justify-content-md-end">
+            <div
+                    class="d-flex align-items-center justify-content-end pr-1 pb-1
+              pb-md-0">
+              <label class="d-flex align-items-center ml-1 ml-md-0">
+                <input
+                        name="searchValue"
+                        type="search"
+                        placeholder="{{
+                  'content.placeholder.search' | translate
+                  }}"
+                        [(ngModel)]="queryParams.q"
+                        class="form-control ml-25"
+                        (input)="onSearch($event.target.value)"
+                />
+              </label>
+              <button
+                      class="btn btn-primary ml-1"
+                      rippleEffect
+                      (click)="openCreateModal(createModal)">
+                <i data-feather="plus" class="mr-0 mr-sm-1"></i>
+                <span class="d-none d-sm-inline-block">
+                  {{ "documents.btn_add" | translate }}
+                </span>
+              </button>
+            </div>
           </div>
         </div>
+        <ngx-datatable
+                [rows]="areas?.data"
+                [rowHeight]="50"
+                class="bootstrap core-bootstrap"
+                [limit]="areas?.per_page"
+                [externalPaging]="true"
+                [count]="areas?.total"
+                [columnMode]="'force'"
+                [headerHeight]="50"
+                [footerHeight]="50"
+                [scrollbarH]="true">
+          <ngx-datatable-column
+                  name="{{ 'areas.field.name' | translate }}" prop="name"></ngx-datatable-column>
+
+          <ngx-datatable-column
+                  name="{{ 'areas.field.count_shelf' | translate }}" prop="count_shelf"></ngx-datatable-column>
+          <ngx-datatable-column
+                  name="{{ 'areas.field.count_document' | translate }}" prop="count_document"></ngx-datatable-column>
+
+          <ngx-datatable-column
+                  name="{{ 'content.actions' | translate }}"
+                  [sortable]="false">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <div class="d-flex align-items-center">
+
+                <button
+                        [routerLink]="[row.id ,'details']"
+                        [queryParams]="{'with[]': ['author']}"
+                        type="button"
+                        class="btn btn-icon btn-info"
+                        rippleEffect>{{ 'content.btn_show_details'| translate}}
+                  <span [data-feather]="'eye'"></span>
+                </button>
+                <button
+                        [swal]="SweetAlertConfirmText"
+                        (click)="deletedRow = row"
+                        type="button"
+                        class="btn btn-icon btn-danger mx-1"
+                        rippleEffect
+                >
+                  <span [data-feather]="'trash'"></span>
+                  {{ 'content.btn_remove'| translate}}
+                </button>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+
+        </ngx-datatable>
       </div>
-    </div>
+    </section>
   </div>
+  <!-- CREATE MODAL -->
+  <div class="modal-primary d-inline-block">
+    <ng-template #createModal let-modal>
+      <app-area-create [modal]="modal"></app-area-create>
+    </ng-template>
+  </div>
+
+  <swal #SweetAlertConfirmText (open)="ConfirmTextOpen()"></swal>
+
 </div>

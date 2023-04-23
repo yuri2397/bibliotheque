@@ -16,7 +16,7 @@
           [routerLinkActive]="!item.openInNewTab ? 'active' : ''"
           [routerLinkActiveOptions]="{ exact: item.exactMatch || false }"
         >
-          <span [routerLink]="item.openInNewTab ? [] : [item.url]" class="d-none"></span>
+          <span [routerLink]="item.openInNewTab ? [] : [item.url]" class="d-none" ></span>
         </li>
         <!-- collapsible -->
         <li
@@ -37,10 +37,10 @@
       [routerLinkActive]="!item.openInNewTab ? 'active' : ''"
       [routerLinkActiveOptions]="{ exact: item.exactMatch || false }"
     >
-      <span [routerLink]="item.openInNewTab ? [] : [item.url]" class="d-none"></span>
+      <span [routerLink]="item.openInNewTab ? [] : [item.url]" [queryParams]="item.params" class="d-none"></span>
     </li>
     <!-- collapsible -->
-    <li core-menu-vertical-collapsible *ngIf="item.type == 'collapsible'" [item]="item" class="nav-item has-sub"></li>
+    <li core-menu-vertical-collapsible *ngIf="item.type == 'collapsible'" [item]="item" class="nav-item has-sub" ></li>
   </ng-container>
 </ng-container>
 <!--/ Vertical Menu -->
@@ -60,7 +60,7 @@
       [routerLinkActive]="!item.openInNewTab ? 'active' : ''"
       [routerLinkActiveOptions]="{ exact: item.exactMatch || false }"
     >
-      <span [routerLink]="item.openInNewTab ? [] : [item.url]" class="d-none"></span>
+      <span [routerLink]="item.openInNewTab ? [] : [item.url]" [queryParams]="item.params" class="d-none"></span>
     </li>
 
     <!-- collapsible -->

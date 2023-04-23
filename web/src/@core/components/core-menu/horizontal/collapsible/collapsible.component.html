@@ -27,7 +27,7 @@
         [routerLinkActive]="!item.openInNewTab ? 'active' : ''"
         [routerLinkActiveOptions]="{ exact: item.exactMatch || false }"
       >
-        <span [routerLink]="item.openInNewTab ? [] : [item.url]" class="d-none"></span>
+        <span [routerLink]="item.openInNewTab ? [] : [item.url]" [queryParams]="item.params" class="d-none"></span>
       </li>
       <!-- collapsible -->
       <li

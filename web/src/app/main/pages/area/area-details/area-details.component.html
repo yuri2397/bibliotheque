@@ -1,72 +1,47 @@
 <div class="content-wrapper container-xxl p-0">
   <div class="content-body">
     <app-content-header [contentHeader]="contentHeader"></app-content-header>
-
-    <div class="card card-user-timeline">
-      <div class="card-header">
-        <div class="form-group">
-          <label for="first-name-icon">Rechercher un document</label>
-          <div class="input-group input-group-merge">
-            <div class="input-group-prepend">
-              <span class="input-group-text"
-                ><span [data-feather]="'search'"></span
-              ></span>
-            </div>
-            <input
-              type="text"
-              id="first-name-icon"
-              class="form-control"
-              name="fname-icon"
-              placeholder="Rechercher un document"
-              ngModel
-              (ngModelChange)="searchInArea($event)"
-            />
-          </div>
-        </div>
-        <div class="d-flex">
-          <button type="button" class="btn btn-primary" rippleEffect>
-            <span [data-feather]="'book'" [class]="'mr-25'"></span>Ajouter un
-            document</button
-          ><button type="button" class="btn btn-secondary mx-2" rippleEffect>
-            <span [data-feather]="'plus'" [class]="'mr-25'"></span>Ajouter étage
-          </button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="ml-50 mb-0">
-          <div *ngFor="let item of area.shelf">
-            <span class="timeline-point timeline-point-indicator"></span>
-            <div class="timeline-event">
-              <div class="divider divider-left">
-                <div class="divider-text">
-                  <div class="badge badge-primary">{{ item.level }}</div>
-                </div>
-              </div>
-              <div class="media align-items-center mt-2">
-                <ng-container *ngIf="item.documents.length; else elseTemplate">
-                  <div *ngFor="let doc of item.documents">
-                    <div class="d-flex position-relative">
-                      <img
-                        src="assets/images/document.jpg"
-                        class="doc-avatar grow pointer"
-                        [ngClass]="{ match: item.matched }"
-                        (click)="docDetails(doc)"
-                        [ngbTooltip]="doc.reference"
-                        alt="DOCUMENT"
-                      />
-                      <!-- <span class="rotate position-absolute left-0 right-0 h-100 doc-ref">{{ doc.reference }}</span> -->
-                    </div>
-                  </div>
-                </ng-container>
-                <ng-template #elseTemplate>
-                  <div class="my-2 py-2 text-center">
-                    <div class="badge badge-glow badge-warning">Rayon vide</div>
-                  </div>
-                </ng-template>
-              </div>
-            </div>
-          </div>
-        </div>
+    <br>
+    <div class="card card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <th>
+            {{ 'documents.field.image'|translate }}
+          </th>
+          <th>
+            {{ 'documents.field.reference'|translate }}
+          </th>
+          <th>
+            {{ 'documents.field.title'|translate }}
+          </th>
+          <th>
+            {{ 'documents.field.summary'|translate }}
+          </th>
+          <th>
+            {{ 'documents.field.author'|translate }}
+          </th>
+          <th>
+            {{ 'documents.field.status'|translate }}
+          </th>
+          </thead>
+          <tbody>
+            <tr class="pointer" [routerLink]="['/admin/documents/' + item.id + '/details']" *ngFor="let item of documents">
+                <td>
+                    <img [src]="item.media.length != 0 ? item?.media[0]?.original_url : '/assets/document.png'" alt="" width="60">
+              </td>
+              <td>{{ item.reference }}</td>
+              <td class="bold text-dark">{{ item.title }}</td>
+              <td>{{ item.summary | resume: 40 }}</td>
+              <td>{{ item.author?.name }}</td>
+              <td>
+                <span class="badge badge-{{ item.status == 'available' ? 'success' : 'danger' }}">
+                  {{ ('documents.field.status_type.' + item.status) | translate }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

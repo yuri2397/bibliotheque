@@ -1,50 +1,60 @@
-import { Document } from "app/@core/models/document.mode";
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { Area } from "app/@core/models/areas.model";
-import { ActiveToast } from "ngx-toastr";
+import {Document} from 'app/@core/models/document.mode';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Area} from 'app/@core/models/areas.model';
+import {Paginate} from '../../../../@core/models/paginate.model';
+import {Param} from '../../../../@core/models/base.model';
 
 @Component({
-  selector: "app-area-details",
-  templateUrl: "./area-details.component.html",
-  styleUrls: ["./area-details.component.scss"],
+    selector: 'app-area-details',
+    templateUrl: './area-details.component.html',
+    styleUrls: ['./area-details.component.scss'],
 })
 export class AreaDetailsComponent implements OnInit {
-  area: Area;
-  public contentHeader: object;
+    documents: Document[];
+    public contentHeader: any;
+    load = false;
 
-  constructor(private _route: ActivatedRoute) {}
+    public queryParams: Param = {};
+    public basicSelectedOption = 5;
+    searchTimeout: NodeJS.Timeout;
+    deletedRow: Document;
 
-  ngOnInit(): void {
-    this._route.data.subscribe((data) => {
-      this.area = data.area;
-      this.area.shelf.sort((a, b) => a.level - b.level);
-      console.log("data: ", data);
-    });
+    constructor(private _route: ActivatedRoute) {
+    }
 
-    this.contentHeader = {
-      headerTitle: "Détails",
-      breadcrumb: {
-        type: "",
-        links: [
-          {
-            name: "Liste rayons",
-            isLink: true,
-            link: "/admin/areas",
-          },
-          {
-            name: "Rayon " + this.area?.name,
-            isLink: false,
-            link: "/admin/areas/" + this.area?.id + "/details",
-          },
-        ],
-      },
-    };
-  }
+    ngOnInit(): void {
+        this._route.data.subscribe((data) => {
+            console.log(data);
+            this.documents = data.documents;
+        });
 
-  searchInArea(data: string) {}
+        this._route.queryParams.subscribe((data) => {
+            this.queryParams = JSON.parse(JSON.stringify(data));
+        });
 
-  docDetails(doc: Document) {
-    // AFFICHER UN DRAWER AVEC LES INFORMATIONS DU DOCUMENT
-  }
+        this.contentHeader = {
+            headerTitle: 'Détails',
+            actionButton: false,
+            breadcrumb: {
+                type: '',
+                links: [
+                    {
+                        name: 'Accueil',
+                        isLink: true,
+                    }  ]
+            }
+        };
+    }
+
+    searchInArea(data: string) {
+    }
+
+    docDetails(doc: Document) {
+        // AFFICHER UN DRAWER AVEC LES INFORMATIONS DU DOCUMENT
+    }
+
+    paginate($event: any) {
+
+    }
 }

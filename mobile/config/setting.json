@@ -1,0 +1,15 @@
+{
+  "appName": "Tanel",
+  "appVersion": "0.0.1",
+  "accentColor": "#EBFDD",
+  "secondColor": "#EBFDD",
+  "mainColor": "#1D617A",
+  "scaffoldColor": "#FFFFFF",
+  "neutralColor": "#64748B",
+  "apiUrl": "http://10.0.2.2:8000/api",
+  "apiUrlForDataWithFile": "https://qa-els.tanelhealth.com/api",
+  "imageBaseUrl": "https://s3.amazonaws.com/logo.tanel/",
+  "googleMapApiKey": "AIzaSyB5yRdRaCDwibL69Y7VkNiVYh7UaVUpg0E",
+  "notificationUrl": "http://10.0.2.2:8001/api/sandaga/notifications",
+  "authSecretKey": "chhcvyrudZRFdue24958T948jdjhdDFHEFHe134cujjdhDjuzscfhnzzucjd"
+}

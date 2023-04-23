@@ -8,6 +8,7 @@ import { CoreConfigService } from '@core/services/config.service';
 import { CoreMenuService } from '@core/components/core-menu/core-menu.service';
 
 import { User } from 'app/auth/models';
+import {CoreMenu} from '../../../../types';
 
 @Component({
   selector: '[core-menu-horizontal-collapsible]',
@@ -25,7 +26,7 @@ export class CoreMenuHorizontalCollapsibleComponent implements OnInit, OnDestroy
   public isActive = false;
 
   @Input()
-  item: any;
+  item: CoreMenu
 
   // Private
   private _unsubscribeAll: Subject<any>;

@@ -8,7 +8,6 @@ import { CoreConfigService } from "@core/services/config.service";
 })
 export class PublicComponent implements OnInit {
   constructor(private _coreConfigService: CoreConfigService) {
-    console.log(this._coreConfigService.config)
     this._coreConfigService.config = {
       layout: {
         navbar: {

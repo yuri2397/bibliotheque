@@ -15,6 +15,7 @@ class Author extends Model implements HasMedia
     use HasFactory, UUID;
 
     protected $with = ['media'];
+    protected $appends = ['nb_documents'];
 
     protected $fillable = ['name', 'bio', 'resume'];
 
@@ -22,5 +23,11 @@ class Author extends Model implements HasMedia
     public function documents()
     {
         return $this->hasMany(Document::class);
+    }
+
+    // nb of documents
+    public function getNbDocumentsAttribute()
+    {
+        return $this->documents()->count();
     }
 }

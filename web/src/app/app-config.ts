@@ -1,4 +1,4 @@
-import { CoreConfig } from "@core/types";
+import {CoreConfig} from '@core/types';
 
 /**
  * Default App Config
@@ -15,38 +15,38 @@ import { CoreConfig } from "@core/types";
 
 // prettier-ignore
 export const coreConfig: CoreConfig = {
-  app: {
-    appName     : 'BIBLIOTHEQUE',                                        // App Name
-    appTitle    : "Découvrez votre bibliothèque en ligne - Une source illimitée de savoir et de connaissance!", // App Title
-    appLogoImage: 'assets/images/logo/logo.svg',                  // App Logo
-    appLanguage : 'fr',                                           // App Default Language (en, fr, de, pt etc..)
-  },
-  layout: {
-    skin  : 'bordered',                        // default, dark, bordered, semi-dark
-    type  : 'vertical',                       // vertical, horizontal
-    animation : 'fadeIn',                     // fadeInLeft, zoomIn , fadeIn, none
-    menu : {
-      hidden               : true,           // Boolean: true, false
-      collapsed            : false,           // Boolean: true, false
+    app: {
+        appName: 'BIBLIOTHEQUE',                                        // App Name
+        appTitle: 'Découvrez votre bibliothèque en ligne - Une source illimitée de savoir et de connaissance!', // App Title
+        appLogoImage: 'assets/images/logo/logo.svg',                  // App Logo
+        appLanguage: 'fr',                                           // App Default Language (en, fr, de, pt etc..)
     },
-    // ? For horizontal menu, navbar type will work for navMenu type
-    navbar: {
-      hidden               : false,           // Boolean: true, false
-      type                 : 'floating-nav',  // navbar-static-top, fixed-top, floating-nav, d-none
-      background           : 'navbar-light',  // navbar-light. navbar-dark
-      customBackgroundColor: true,            // Boolean: true, false
-      backgroundColor      : ''               // BS color i.e bg-primary, bg-success
-    },
-    footer: {
-      hidden               : true,           // Boolean: true, false
-      type                 : 'footer-static', // footer-static, footer-sticky, d-none
-      background           : 'footer-light',  // footer-light. footer-dark
-      customBackgroundColor: false,           // Boolean: true, false
-      backgroundColor      : ''               // BS color i.e bg-primary, bg-success
-    },
-    enableLocalStorage: false,
-    customizer  : false,                       // Boolean: true, false (Enable theme customizer)
-    scrollTop   : false,                       // Boolean: true, false (Enable scroll to top button)
-    buyNow      : false                        // Boolean: true, false (Set false in real project, For demo purpose only)
-  }
-}
+    layout: {
+        skin: 'bordered',                        // default, dark, bordered, semi-dark
+        type: 'horizontal',                       // vertical, horizontal
+        animation: 'zoomIn',                     // fadeInLeft, zoomIn , fadeIn, none
+        menu: {
+            hidden: false,           // Boolean: true, false
+            collapsed: false,           // Boolean: true, false
+        },
+        // ? For horizontal menu, navbar type will work for navMenu type
+        navbar: {
+            hidden: false,           // Boolean: true, false
+            type: 'fixed-top',  // navbar-static-top, fixed-top, floating-nav, d-none
+            background: 'navbar-light',  // navbar-light. navbar-dark
+            customBackgroundColor: true,            // Boolean: true, false
+            backgroundColor: ''               // BS color i.e bg-primary, bg-success
+        },
+        footer: {
+            hidden: true,           // Boolean: true, false
+            type: 'footer-static', // footer-static, footer-sticky, d-none
+            background: 'footer-light',  // footer-light. footer-dark
+            customBackgroundColor: false,           // Boolean: true, false
+            backgroundColor: ''               // BS color i.e bg-primary, bg-success
+        },
+        enableLocalStorage: false,
+        customizer: true,                       // Boolean: true, false (Enable theme customizer)
+        scrollTop: false,                       // Boolean: true, false (Enable scroll to top button)
+        buyNow: false                        // Boolean: true, false (Set false in real project, For demo purpose only)
+    }
+};

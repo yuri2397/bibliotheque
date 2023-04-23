@@ -20,7 +20,7 @@ class DocumentController extends Controller
         if ($request->has('q')) {
             $query->where('title', 'like', '%' . $request->q . '%');
             
-            $query->orWhereHas('authors', function ($q) use ($request) {
+            $query->orWhereHas('author', function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->q . '%');
             });
 
@@ -29,12 +29,20 @@ class DocumentController extends Controller
             });
         }
 
-        return $query->paginate(
-            $request->per_page ?? 15,
-            $request->columns ?? ['*'],
-            $request->page_name ?? 'page',
-            $request->page ?? 1
-        );
+        if($request->has('area_id')){
+            $query->where('area_id', $request->area_id);
+        }
+
+        if($request->has('per_page')){
+            return $query->paginate(
+                $request->per_page ?? 15,
+                $request->columns ?? ['*'],
+                $request->page_name ?? 'page',
+                $request->page ?? 1
+            );
+        }
+
+        return $query->get();
     }
 
     /**
@@ -48,15 +56,25 @@ class DocumentController extends Controller
         // validation
         $request->validate([
             'title' => 'required',
+            'reference' => 'required',
             'summary' => 'required',
             'author_id' => 'required',
+            'area_id' => ['required', 'exists:areas,id'],
+            'shelf_id' => ['required', 'exists:shelf,id'],
             'copies' => ['numeric']
         ]);
 
-        $request->merge(['reference' => Document::generateReference()]);
-        $document = Document::create($request->all());
-        if($request->has('copies') && is_int($request->copies)){
-            for ($i=0; $i < $request->copies; $i++) { 
+        // $request->merge(['reference' => Document::generateReference()]);
+        $document = Document::create(
+            $request->only(['title', 'summary', 'author_id', 'reference', 'area_id', 'shelf_id'])
+        );
+
+        if($request->file('image')){
+            $document->addMedia($request->file('image'))->toMediaCollection('images');
+        }
+
+        if($request->has('copies') ){
+            for ($i=0; $i < (int)$request->copies; $i++) { 
                 $cp = new DocumentCopy();
                 $cp->document_id = $document->id;
                 $cp->sub_reference = $document->reference . '/' . ($i + 1);
@@ -102,6 +120,6 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
-        //
+        
     }
 }

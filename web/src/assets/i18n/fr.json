@@ -1,0 +1,95 @@
+{
+  "documents": {
+    "title": "Titre",
+    "list": "Liste des documents",
+    "summary": "Resumé",
+    "author": "Author",
+    "field": {
+      "image": "Image",
+         "reference": "Référence",
+        "title": "Titre",
+        "summary": "Resumé",
+        "author": "Auteur",
+        "content": "Contenu",
+        "status": "Statut",
+        "status_type": {
+          "available": "Disponible",
+          "checked_out": "Réservé",
+          "lost": "Perdu"
+        },
+        "created_at": "Créé le",
+        "updated_at": "Mis à jour le"
+    },
+    "btn_add": "Ajouter un document",
+    "modal_create_title": "Ajouter un nouveau document",
+    "create_success": "Document crée avec succès.",
+    "create_error": "Impossible d'ajouter le document. Veuillez réesayer plustard."
+  },
+  "areas": {
+    "title": "Rayon",
+    "shelf": "Etagère",
+    "list": "Liste des rayons",
+    "field": {
+      "name": "Nom",
+      "count_shelf": "Nombre d'étagères",
+      "count_document": "Nombre de documents",
+      "label": "Label",
+      "description": "Description",
+      "created_at": "Créé le",
+      "updated_at": "Mis à jour le"
+    }
+  },
+  "form": {
+    "validation": {
+      "required": "Ce champ est obligatoire."
+    }
+  },
+  "content": {
+    "btn_cancel": "Annuler",
+    "actions": "Actions",
+    "btn_submit": "Enregistrer",
+    "btn_show_details": "Voir les détails",
+    "btn_confirm": "Confirmer",
+    "btn_edit": "Modifier",
+    "btn_create": "Créer",
+    "btn_save": "Enregistrer",
+    "btn_close": "Fermer",
+    "btn_remove":"Supprimer",
+    "placeholder": {
+      "search": "Rechercher"
+    },
+    "notifications": {
+      "title": "Notification",
+      "success": {
+        "title": "Succès",
+        "message": "Opération effectuée avec succès"
+      },
+      "error": {
+        "title": "Erreur",
+        "message": "Une erreur s'est produite lors de l'opération"
+      },
+      "warning": {
+        "title": "Attention",
+        "message": "Attention, une erreur s'est produite"
+      },
+      "info": {
+        "title": "Information",
+        "message": "Information"
+      },
+      "confirm": {
+        "delete": {
+          "title": "Attention !",
+          "text": "Êtes-vous sûr de vouloir supprimer cet élément ?",
+          "success": "Suppression effectuée avec succès",
+          "error": "Une erreur s'est produite lors de la suppression"
+        },
+        "create": {
+          "title": "Attention !",
+          "text": "Êtes-vous sûr de vouloir continuer?",
+          "success": "Création effectuée avec succès",
+          "error": "Une erreur s'est produite lors de la création"
+        }
+      }
+    }
+  }
+}

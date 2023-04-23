@@ -5,6 +5,7 @@
     [ngClass]="item.classes"
     *ngIf="item.url && !item.externalUrl"
     [routerLink]="[item.url]"
+    [queryParams]="item.params"
     [target]="item.openInNewTab ? '_blank' : '_self'"
   >
     <ng-container *ngTemplateOutlet="itemContent"></ng-container>

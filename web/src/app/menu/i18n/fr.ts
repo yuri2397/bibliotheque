@@ -7,6 +7,7 @@ export const locale = {
       DOCUMENT: 'Document',
       AREA: 'Rayon',
       USER: 'Utilisateur',
+      AUTHOR: 'Auteurs'
     },
     DOCUMENT: {
       TITLE: 'Titre',
@@ -15,6 +16,7 @@ export const locale = {
       STATUS: 'Disponibilité'
     },
     AUTHOR: {
+      TITLE: 'Auteurs',
       NAME: 'Auteur'
     },
     CONTENT: {

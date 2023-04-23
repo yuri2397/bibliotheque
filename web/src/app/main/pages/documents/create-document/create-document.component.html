@@ -1,87 +1,230 @@
 <!-- HEADER -->
 <div class="modal-header">
-  <h5 class="modal-title" id="create_document">
-    {{ "course.create.title" | translate }}
-  </h5>
-  <button
-    type="button"
-    class="close"
-    (click)="modal.dismiss('cancel')"
-    aria-label="Close"
-  >
-    <span aria-hidden="true">&times;</span>
-  </button>
+    <h5 class="modal-title" id="create_document">
+        {{ "documents.modal_create_title" | translate }}
+    </h5>
+    <button
+            type="button"
+            class="close"
+            (click)="modal.dismiss('cancel')"
+            aria-label="Close"
+    >
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 <!-- BODY -->
 <div class="modal-body py-4" tabindex="0" ngbAutofocus>
-  <form [formGroup]="form">
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label class="form-control-label" for="title">
-            {{ "course.field.title" | translate }}
-          </label>
-          <input
-            class="form-control input-md"
-            formControlName="title"
-            type="text"
-            placeholder="{{ 'DOCUMENT.TITLE' | translate }}"
-            id="title"
-            [class.error]="title.invalid && (title.dirty || title.touched)"
-          />
-          <span
-            *ngIf="title.invalid && (title.dirty || title.touched)"
-            class="invalid-form"
-          >
+    <form [formGroup]="form">
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-primary" (click)="image?.click()" >
+                    <i data-feather="camera" class="mr-0 mr-sm-1"></i>
+                    Choisir Image
+                </button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label class="form-control-label" for="title">
+                        {{ "documents.title" | translate }}
+                    </label>
+                    <input
+                            class="form-control input-md"
+                            formControlName="title"
+                            type="text"
+                            placeholder="{{ 'documents.title' | translate }}"
+                            id="title"
+                            [class.error]="title.invalid && (title.dirty || title.touched)"
+                    />
+                    <span
+                            *ngIf="title.invalid && (title.dirty || title.touched)"
+                            class="invalid-form"
+                    >
             <small
-              class="form-text text-danger danger"
-              *ngIf="title.errors?.['required']"
+                    class="form-text text-danger danger"
+                    *ngIf="title.errors?.['required']"
             >
-              {{ "form.validation.errors.required" | translate }}
+              {{ "form.validation.required" | translate }}
             </small>
           </span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label class="form-control-label" for="author_id">
+                        {{ "documents.author" | translate }}
+                    </label>
+                    <ng-select
+                            id="author_id"
+                            readonly
+                            [class.error]="author_id.invalid && (author_id.dirty || author_id.touched)"
+                            formControlName="author_id"
+                            [placeholder]="'documents.author' | translate"
+                            [loading]="authorLoading"
+                            ngModel
+                            (ngModelChange)="onAuthorSearch($event)"
+                    >
+                        <ng-option *ngFor="let item of authors" [value]="item.id"
+                        >{{ item.name }}</ng-option
+                        >
+                    </ng-select>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label class="form-control-label" for="name">
-            {{ "course.field.name" | translate }}
-          </label>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label class="form-control-label" for="reference">
+                        {{ "documents.reference" | translate }}
+                    </label>
+                    <input
+                            class="form-control input-md"
+                            formControlName="reference"
+                            type="text"
+                            placeholder="{{ 'documents.reference' | translate }}"
+                            id="reference"
+                            [class.error]="reference.invalid && (reference.dirty || reference.touched)"
+                    />
+                    <span
+                            *ngIf="reference.invalid && (reference.dirty || reference.touched)"
+                            class="invalid-form"
+                    >
+            <small
+                    class="form-text text-danger danger"
+                    *ngIf="reference.errors?.['required']"
+            >
+              {{ "form.validation.required" | translate }}
+            </small>
+          </span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label class="form-control-label" for="copies">
+                        {{ "documents.copies" | translate }}
+                    </label>
+                    <input
+                            class="form-control input-md"
+                            formControlName="copies"
+                            type="number"
+                            min="1"
+                            placeholder="{{ 'documents.copies' | translate }}"
+                            id="copies"
+                            [class.error]="copies.invalid && (copies.dirty || copies.touched)"
+                    />
+                    <span
+                            *ngIf="copies.invalid && (copies.dirty || copies.touched)"
+                            class="invalid-form"
+                    >
+            <small
+                    class="form-text text-danger danger"
+                    *ngIf="copies.errors?.['required']"
+            >
+              {{ "form.validation.required" | translate }}
+            </small>
+          </span>
+                </div>
+            </div>
 
-          <div class="ng-autocomplete">
-            
-          </div>
         </div>
-      </div>
-    </div>
-  </form>
+        <br>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label class="form-control-label" for="area_id">
+                        {{ "documents.area" | translate }}
+                    </label>
+                    <ng-select
+                            id="area_id"
+                            readonly
+                            [class.error]="area_id.invalid && (area_id.dirty || area_id.touched)"
+                            formControlName="area_id"
+                            [placeholder]="'documents.area' | translate"
+                            [loading]="areaLoading"
+                            ngModel
+                            (ngModelChange)="onAreaChange($event)"
+                    >
+                        <ng-option *ngFor="let item of areas" [value]="item.id"
+                        >{{ item.name }}</ng-option
+                        >
+                    </ng-select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label class="form-control-label" for="shelf_id">
+                        {{ "documents.shelf" | translate }}
+                    </label>
+                    <ng-select
+                            id="shelf_id"
+                            readonly
+                            [class.error]="shelf_id.invalid && (shelf_id.dirty || shelf_id.touched)"
+                            formControlName="shelf_id"
+                            [placeholder]="'documents.shelf' | translate"
+                            ngModel
+                    >
+                        <ng-option *ngFor="let item of shelfs" [value]="item.id"
+                        >{{ item.level }}</ng-option
+                        >
+                    </ng-select>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <label class="form-control-label" for="summary">
+                    {{ "documents.summary" | translate }}
+                </label>
+                <textarea formControlName="summary"
+                          [class.error]="summary.invalid && (summary.dirty || summary.touched)"
+                          type="text" class="form-control input-md" name="summary" id="summary" cols="30" rows="4">
+                </textarea>
+                <span
+                        *ngIf="summary.invalid && (summary.dirty || summary.touched)"
+                        class="invalid-form"
+                >
+                    <small
+                    class="form-text text-danger danger"
+                    *ngIf="summary.errors?.['required']"
+                >
+                    {{ "form.validation.required" | translate }}
+                    </small>
+          </span>
+
+            </div>
+        </div>
+        <input type="file" name="iamge" (change)="chooseImage($event)" id="image" hidden="hidden" #image>
+    </form>
 </div>
 
 <!-- FOOTER -->
 <div class="modal-footer">
-  <div class="w-100 d-flex align-items-center justify-content-between">
-    <button
-      type="reset"
-      class="btn btn-outline-secondary"
-      (click)="modal.dismiss('cancel')"
-      rippleEffect
-    >
-      {{ "content.btn.cancel" | translate }}
-    </button>
-    <button
-      type="submit"
-      [disabled]="!form.valid || createdLoad"
-      (click)="submit(form.value)"
-      class="btn btn-primary mr-1"
-      rippleEffect
-    >
+    <div class="w-100 d-flex align-items-center justify-content-between">
+        <button
+                type="reset"
+                class="btn btn-outline-secondary"
+                (click)="modal.dismiss('cancel')"
+                rippleEffect
+        >
+            {{ "content.btn_cancel" | translate }}
+        </button>
+        <button
+                type="submit"
+                [disabled]="!form.valid || createdLoad"
+                (click)="submit(form.value)"
+                class="btn btn-primary mr-1"
+                rippleEffect
+        >
       <span
-        *ngIf="createdLoad"
-        class="spinner-border spinner-border-sm"
-        role="status"
-        aria-hidden="true"
+              *ngIf="createdLoad"
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
       ></span>
-      {{ "content.btn.submit" | translate }}
-    </button>
-  </div>
+            {{ "content.btn_submit" | translate }}
+        </button>
+    </div>
 </div>

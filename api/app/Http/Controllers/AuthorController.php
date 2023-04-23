@@ -16,16 +16,20 @@ class AuthorController extends Controller
     {
         $query = Author::with($request->with ?? []);
 
-        if ($request->has('search')) {
-            $query->where('name', 'like', '%' . $request->search . '%');
+        if ($request->has('q')) {
+            $query->where('name', 'like', '%' . $request->q . '%');
         }
 
-        return $query->paginate(
-            $request->per_page ?? 10,
-            $request->columns ?? ['*'],
-            $request->page_name ?? 'page',
-            $request->page ?? 1
-        );
+        if($request->has('per_page')){
+            return $query->paginate(
+                $request->per_page ?? 10,
+                $request->columns ?? ['*'],
+                $request->page_name ?? 'page',
+                $request->page ?? 1
+            );
+        }
+
+        return $query->get();
     }
 
     /**

@@ -768,70 +768,9 @@
  
   <footer class="cs-footer cs-style1 cs-parallax mt-5">
     <div class="cs-height__110 cs-height__lg__70"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-sm-6">
-          <div class="cs-footer__item">
-            <h2 class="cs-widget__title">About</h2>
-            <div class="cs-footer__widget__text">
-              We always try to give our best quality guidence for our all
-              clients. So they will success & growth business well.
-            </div>
-            <div class="cs-height__15 cs-height__lg__15"></div>
-            <div class="cs-social__btns cs-style1">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-pinterest-p"></i></a>
-            </div>
-          </div>
-        </div>
-        <!-- .col -->
-        <div class="col-lg-3 col-sm-6">
-          <div class="cs-footer__item widget_nav_menu">
-            <h2 class="cs-widget__title">Services</h2>
-            <ul class="menu">
-              <li><a href="#">IT Consultant</a></li>
-              <li><a href="#">Business Growth</a></li>
-              <li><a href="#">Investent Plan</a></li>
-              <li><a href="#">Product Development</a></li>
-              <li><a href="#">Industrial Consultant</a></li>
-            </ul>
-          </div>
-        </div>
-        <!-- .col -->
-        <div class="col-lg-3 col-sm-6">
-          <div class="cs-footer__item widget_nav_menu">
-            <h2 class="cs-widget__title">Support</h2>
-            <ul class="menu">
-              <li><a href="#">Documentation</a></li>
-              <li><a href="#">Product</a></li>
-              <li><a href="#">Reporting Issue</a></li>
-              <li><a href="#">Terms & Conditions</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-            </ul>
-          </div>
-        </div>
-        <!-- .col -->
-        <div class="col-lg-3 col-sm-6">
-          <div class="cs-footer__item widget_nav_menu">
-            <h2 class="cs-widget__title">Quick Links</h2>
-            <ul class="menu">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about_2.html">About</a></li>
-              <li><a href="service.html">Services</a></li>
-              <li><a href="pricing.html">Pricing</a></li>
-              <li><a href="contact_1.html">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-        <!-- .col -->
-      </div>
-      <!-- <div class="cs-height__85 cs-height__lg__40"></div> -->
-    </div>
     <div class="cs-copyright text-center">
       <div class="container">
-        © 2020 - Lala by Laralink. All Rights Reserved.
+        © {{ date.getFullYear() }} - Tous droits réservés - <a [routerLink]="['/admin/documents']" [queryParams]="{'with[]': ['author', 'area'], 'per_page': 15, 'page': 1 }" class="btn btn-primary"> Page d'administration</a>
       </div>
     </div>
     <div class="cs-parallax__shape cs-position1">

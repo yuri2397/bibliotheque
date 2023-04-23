@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { CoreMenuService } from '@core/components/core-menu/core-menu.service';
+import {CoreMenu} from '../../types';
 
 @Component({
   selector: '[core-menu]',
@@ -19,7 +20,7 @@ export class CoreMenuComponent implements OnInit {
   layout = 'vertical';
 
   @Input()
-  menu: any;
+  menu: CoreMenu[];
 
   // Private
   private _unsubscribeAll: Subject<any>;

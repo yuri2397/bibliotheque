@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Document extends Model implements HasMedia
+class   Document extends Model implements HasMedia
 {
     use InteractsWithMedia;
     use HasFactory, UUID;
@@ -32,7 +32,7 @@ class Document extends Model implements HasMedia
      *
      * @var array<int, string>
      */
-    protected $fillable = ['title', 'summary', 'reference', 'author_id'];
+    protected $fillable = ['title', 'summary', 'author_id', 'reference', 'area_id', 'shelf_id'];
 
     public function document_copies()
     {

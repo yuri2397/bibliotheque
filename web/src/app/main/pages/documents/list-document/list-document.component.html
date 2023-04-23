@@ -36,7 +36,7 @@
                   placeholder="{{
                   'class_room.placeholder.search' | translate
                   }}"
-                  [(ngModel)]="queryParams.search_query"
+                  [(ngModel)]="queryParams.q"
                   class="form-control ml-25"
                   (input)="onSearch($event.target.value)"
                   />
@@ -47,7 +47,7 @@
                 (click)="openCreateModal(createModal)">
                 <i data-feather="plus" class="mr-0 mr-sm-1"></i>
                 <span class="d-none d-sm-inline-block">
-                  {{ "class_room.btn.add" | translate }}
+                  {{ "documents.btn_add" | translate }}
                 </span>
               </button>
             </div>
@@ -68,7 +68,7 @@
           [footerHeight]="50"
           [scrollbarH]="true">
           <ngx-datatable-column
-            name="{{ 'DOCUMENT.REFERENCE' | translate }}" prop="reference">
+            name="{{ 'documents.field.reference' | translate }}" prop="reference">
 
             <ng-template let-reference="value" ngx-datatable-cell-template>
 
@@ -78,10 +78,8 @@
 
 
           <ngx-datatable-column
-            name="{{ 'DOCUMENT.TITLE' | translate }}"
+            name="{{ 'documents.field.title' | translate }}"
             prop="title">
-
-
 
           </ngx-datatable-column>
 
@@ -90,16 +88,13 @@
             prop="summary">
           </ngx-datatable-column> -->
           <ngx-datatable-column
-            [maxWidth]="200"
-            name="{{ 'AUTHOR.NAME' | translate }}"
+            name="{{ 'documents.field.author' | translate }}"
             prop="author.name">
           </ngx-datatable-column>
 
-
           <ngx-datatable-column
-            name="{{ 'DOCUMENT.STATUS' | translate }}"
-            prop="status"
-            [width]="100">
+            name="{{ 'documents.field.status' | translate }}"
+            prop="status">
             <ng-template let-status="value" ngx-datatable-cell-template>
               <div
                 *ngIf="status && status == 'available'"
@@ -107,7 +102,7 @@
                 [ngClass]="{
                 'badge-light-success': true
                 }">
-                {{ 'CONTENT.AVAILABLE' | translate }}
+                {{ 'documents.field.status_type.available' | translate }}
               </div>
               <div
                 *ngIf="status && status == 'checked_out'"
@@ -115,7 +110,7 @@
                 [ngClass]="{
                 'badge-light-warning': true
                 }">
-                {{ 'CONTENT.CHECKED_OUT' | translate }}
+                {{ 'documents.field.status_type.checked_out' | translate }}
               </div>
 
               <div
@@ -124,13 +119,12 @@
                 [ngClass]="{
                 'badge-light-danger': true
                 }">
-                {{ 'CONTENT.LOST' | translate }}
+                {{ 'documents.field.status_type.lost' | translate }}
               </div>
 
             </ng-template>
           </ngx-datatable-column>
           <ngx-datatable-column
-            [maxWidth]="200"
             name="{{ 'CONTENT.ACTIONS' | translate }}"
             [sortable]="false">
             <ng-template let-row="row" ngx-datatable-cell-template>
@@ -140,8 +134,18 @@
                   [routerLink]="['/admin/documents', row.id ,'details']"
                   type="button"
                   class="btn btn-icon btn-info"
-                  rippleEffect>Voir détails
+                  rippleEffect>{{ 'content.btn_show_details'| translate}}
                   <span [data-feather]="'eye'"></span>
+                </button>
+                <button
+                        [swal]="SweetAlertConfirmText"
+                        (click)="deletedRow = row"
+                        type="button"
+                        class="btn btn-icon btn-danger mx-1"
+                        rippleEffect
+                >
+                  <span [data-feather]="'trash'"></span>
+                  {{ 'content.btn_remove'| translate}}
                 </button>
               </div>
             </ng-template>
@@ -165,6 +169,7 @@
     </ng-template>
   </div>
 
+
   <!-- CONFIRM DELETE -->
-  <!-- <swal #SweetAlertConfirmText (open)="ConfirmTextOpen()"></swal> -->
+  <swal #SweetAlertConfirmText (open)="ConfirmTextOpen()"></swal>
 </div>

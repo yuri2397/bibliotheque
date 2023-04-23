@@ -1,20 +1,86 @@
 <div class="content-wrapper container-xxl p-0">
-  <div class="content-body">
-    <div class="card card-developer-meetup">
-      <div class="bg-light-primary rounded-top text-center">
-        <img
-          src="assets/images/illustration/email.svg"
-          alt="Meeting Pic"
-          height="170"
-        />
-      </div>
-      <div class="card-body">
-        <h1 class="card-title bold">{{ document?.title }}</h1>
+    <div class="content-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card  h-100">
+                    <div class="card-body">
+                        <div class="item-img text-center"><img alt="img-placeholder" class="img-fluid card-img-top"
+                                                               [src]="document?.media.length ? document.media[0].original_url : 'assets/document.png'">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-info">
+                            <i data-feather="camera" class="mr-0 mr-sm-1"></i>
+                            Ajouter image
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card card-transaction  h-100">
+                    <div class="card-body">
+                        <h1 class="text-dark font-weight-bold">{{document?.title}}</h1>
+                        <br>
+                        <div class="card-body ">
+                            <div class="border border-1 rounded rounded-3 p-2">
+                                <div class="transaction-item">
+                                    <div class="media">
+                                        <span class="lead text-dark font-weight-bolder text-uppercase">Réference</span>
+                                    </div>
+                                    <div class="font-weight-bolder text-uppercase lead text-dark">{{document?.reference}}</div>
+                                </div>
+                                <hr>
+                                <div class="transaction-item">
+                                    <div class="media align-items-center">
+                                        <span class="lead text-dark font-weight-bolder text-uppercase">Auteur</span>
+                                    </div>
+                                    <div class="font-weight-bolder text-uppercase lead text-dark">{{document?.author?.name}}</div>
+                                </div>
+                                <hr>
+                                <div class="transaction-item">
+                                    <div class="media align-items-center">
+                                        <span class="lead text-dark font-weight-bolder text-uppercase">Rayon</span>
+                                    </div>
+                                    <div class="font-weight-bolder text-uppercase lead text-dark">{{document?.area?.name}}</div>
+                                </div>
+                                <hr>
+                                <div class="transaction-item">
+                                    <div class="media align-items-center">
+                                        <span class="lead text-dark font-weight-bolder text-uppercase">Etagaire</span>
+                                    </div>
+                                    <div class="font-weight-bolder text-uppercase lead text-dark">{{document?.shelf?.level }}</div>
+                                </div>
+                            </div>
+                            <br>
+                            <span class="lead font-weight-bold ">Nombre d'exemplaire: {{ document?.document_copies?.length }}</span>
+                            <br>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-3" *ngFor="let item of document?.document_copies">
+                                    <div class="card card-body">
+                                        Réference: {{ item.sub_reference }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex align-items-center justify-content-between">
 
-        <p class="card-text">{{ document?.summary }}
-        </p>
-      </div>
+                            <button (click)="ConfirmTextOpen()" class="btn btn-danger">
+                                <i data-feather="delete" class="mr-0 mr-sm-1"></i>
+                                Supprimer
+                            </button>
+                            <button [routerLink]="['/admin/documents', document?.id ,'update']" class="btn btn-info">
+                                <i data-feather="edit" class="mr-0 mr-sm-1"></i>
+                                {{ 'documents.btn.update'|translate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <br />
-  </div>
 </div>
+
+<swal #SweetAlertConfirmText (open)="ConfirmTextOpen()"></swal>

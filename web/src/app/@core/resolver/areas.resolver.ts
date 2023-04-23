@@ -19,8 +19,7 @@ export class AreasResolver implements Resolve<Paginate<Area>> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<Paginate<Area>> {
-    return this._areaService.index({
-      "with[]": ["shelf"],
-    });
+    const params = route.queryParams;
+    return this._areaService.index(params);
   }
 }

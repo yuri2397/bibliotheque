@@ -16,8 +16,8 @@ class AreaController extends Controller
     {
         $query = Area::with($request->with ?? []);
 
-        if ($request->has('search')) {
-            $query->where('name', 'like', '%' . $request->search . '%');
+        if ($request->has('q')) {
+            $query->where('name', 'like', '%' . $request->q . '%');
         }
 
         if($request->has('per_page')){
