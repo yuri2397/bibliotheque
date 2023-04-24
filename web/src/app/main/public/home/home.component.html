@@ -26,7 +26,8 @@
             />
           </div>
           <a
-            (click)="searchDocuments()"
+            [routerLink]="['search-documents']"
+            [queryParams]="{'search_query': searchQuery}"
             class="cs-btn cs-style1 cs-color1 cs-primary__font mx-2"
           >
             <span class="cs-btn__text">Rechercher</span>

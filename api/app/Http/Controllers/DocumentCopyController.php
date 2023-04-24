@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Document;
 use App\Models\DocumentCopy;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,20 @@ class DocumentCopyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $query = Document::with($request->with ?? []);
+
+        if($request->has('search_key')){
+            $query->where('title', 'LIKE', '%' . $request->search_key . '%')
+            ->orWhere('reference', 'LIKE', '%' . $request->search_key . '%');
+
+            $query->whereHas('author', function ($q) use ($request) {
+                $q->where('name', 'LIKE', '%' . $request->search_key . '%' );
+            });
+        }
+        
+        return $query->paginate(25, ['*'], 'page', 1);
     }
 
     /**

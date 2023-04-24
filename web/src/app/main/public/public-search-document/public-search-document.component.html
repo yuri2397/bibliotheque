@@ -1,0 +1,49 @@
+<div class="container my-3">
+    <div class="center w-50">
+        <label for="search" class="h5">Rechercher un document</label>
+        <div class="d-flex align-items-center jutify-content-center">
+            <input id="search" type="text" (ngModelChange)="reload($event)" [(ngModel)]="searchKey"
+                   placeholder="Rechercher un document" class="form-control">
+            <div class="mx-2">
+                <button rippleEffect class="btn btn-primary" (click)="search(searchKey)">
+                    <span *ngIf="searchLoad" class="spinner-border spinner-border-sm"
+                          role="status" aria-hidden="true"></span>
+                    Rechercher
+                </button>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-4 g-3">
+        <div *ngFor="let item of documents" class="col">
+            <div class="card shadow-sm h-100">
+                <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ (item.media && item.media.length != 0) ? item.media[0].original_url : 'assets/document.png' }}">
+                <div class="card-body ">
+                    <span class="card-title text-dark mb-2">{{ item.title }}</span>
+                    <p class="card-text">{{ item.summary | resume: 100 }}</p>
+                    <span class="text-primary d-block">{{ item?.author?.name }}</span>
+                    <!-- badge -->
+                </div>
+                <div class="card-footer">
+                    <div
+                            *ngIf="item.status == 'available'"
+                            class="badge badge-pill"
+                            [ngClass]="{ 'badge-light-success': true }">
+                        {{ 'documents.field.status_type.available' | translate }}
+                    </div>
+                    <div *ngIf="item.status == 'checked_out'"
+                         class="badge badge-pill"
+                         [ngClass]="{ 'badge-light-warning': true }">
+                        {{ 'documents.field.status_type.checked_out' | translate }}
+                    </div>
+                    <div *ngIf="item.status == 'lost'"
+                         class="badge badge-pill"
+                         [ngClass]="{ 'badge-light-danger': true }">
+                        {{ 'documents.field.status_type.lost' | translate }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
