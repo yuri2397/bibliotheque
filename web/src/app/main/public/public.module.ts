@@ -6,18 +6,19 @@ import { PublicComponent } from './public.component';
 import { HomeComponent } from './home/home.component';
 import { DocumentDetailsComponent } from './document-details/document-details.component';
 import { SharedModule } from '../shared/shared.module';
+import {PublicSearchDocumentComponent} from './public-search-document/public-search-document.component';
 
 
 @NgModule({
   declarations: [
     PublicComponent,
     HomeComponent,
-    DocumentDetailsComponent
+    DocumentDetailsComponent,
+    PublicSearchDocumentComponent
   ],
   imports: [
     CommonModule,
     PublicRoutingModule,
-
     SharedModule
   ]
 })

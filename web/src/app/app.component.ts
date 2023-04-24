@@ -33,20 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
   // Private
   private _unsubscribeAll: Subject<any>;
 
-  /**
-   * Constructor
-   *
-   * @param {DOCUMENT} document
-   * @param {Title} _title
-   * @param {Renderer2} _renderer
-   * @param {ElementRef} _elementRef
-   * @param {CoreConfigService} _coreConfigService
-   * @param {CoreSidebarService} _coreSidebarService
-   * @param {CoreLoadingScreenService} _coreLoadingScreenService
-   * @param {CoreMenuService} _coreMenuService
-   * @param {CoreTranslationService} _coreTranslationService
-   * @param {TranslateService} _translateService
-   */
+
   constructor(
     @Inject(DOCUMENT) private document: any,
     private _title: Title,

@@ -15,7 +15,7 @@
   name="themeCustomizer"
   class="customizer d-none d-md-block"
   [invisibleOverlay]="true"
-  *ngIf="coreConfig.layout.customizer"
+  *ngIf="coreConfig?.layout?.customizer ?? false"
 >
   <a
     class="customizer-toggle d-flex align-items-center justify-content-center"
